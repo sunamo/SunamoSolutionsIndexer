@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DefineConstants>DEBUG2;DEBUG;TRACE;ASYNC</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\sunamo\SunamoCode\SunamoCode.csproj">
+    </ProjectReference>
+    <ProjectReference Include="..\SunamoExtensions\SunamoExtensions.csproj" />
+    <ProjectReference Include="..\SunamoMarkdown\SunamoMarkdown.csproj" />
+    <ProjectReference Include="..\SunamoXlf\SunamoXlf.csproj" />
+    <ProjectReference Include="..\sunamo\sunamo.csproj">
+    </ProjectReference>
+    <ProjectReference Include="..\win.std\win.std.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0">
+    </PackageReference>
+    <PackageReference Include="SunamoFubuCsProjFile" Version="23.11.19.2" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0">
+    </PackageReference>
+  </ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>
+  </PropertyGroup>
+</Project>
