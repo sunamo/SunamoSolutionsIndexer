@@ -1,3 +1,5 @@
+namespace SunamoSolutionsIndexer;
+
 public partial class SolutionsIndexerHelper
 {
 
@@ -42,7 +44,7 @@ public partial class SolutionsIndexerHelper
             }
         }
 
-        ThisApp.SetStatus(TypeOfMessage.Warning, name + " solution was not found");
+        ThisApp.Warning( name + " solution was not found");
         return null;
     }
 
@@ -123,7 +125,7 @@ public partial class SolutionsIndexerHelper
         }
 
         tokens.Reverse();
-        return SH.Join(AllChars.slash, tokens.ToArray());
+        return string.Join(AllChars.slash, tokens.ToArray());
     }
 
     public static List<string> ModulesInSolution(List<string> projects, string fullPathFolder, bool selling, PpkOnDrive toSelling)
@@ -133,8 +135,8 @@ public partial class SolutionsIndexerHelper
 
         foreach (var item in projects)
         {
-            var path = Path.Combine(fullPathFolder, FS.GetFileNameWithoutExtension(item));
-            var projectName = FS.GetFileNameWithoutExtension(item);
+            var path = Path.Combine(fullPathFolder, Path.GetFileNameWithoutExtension(item));
+            var projectName = Path.GetFileNameWithoutExtension(item);
 
             slnName = FS.GetFileName(fullPathFolder);
             AddModules(selling, toSelling, result, slnName, projectName, path, "UserControl");

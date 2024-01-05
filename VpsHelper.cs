@@ -1,3 +1,5 @@
+namespace SunamoSolutionsIndexer;
+
 public class VpsHelper
 {
     public static bool IsVps
@@ -88,7 +90,7 @@ public class VpsHelper
                 }
                 else
                 {
-                    ThisApp.SetStatus(TypeOfMessage.Warning, item + " solution was not found");
+                    ThisApp.Warning( item + " solution was not found");
                 }
             }
 

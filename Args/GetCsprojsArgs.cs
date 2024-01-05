@@ -1,3 +1,5 @@
+namespace SunamoSolutionsIndexer.Args;
+
 public class GetCsprojsArgs
 {
     /// <summary>

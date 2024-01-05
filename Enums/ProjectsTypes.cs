@@ -1,7 +1,10 @@
+namespace SunamoSolutionsIndexer.Enums;
+
 public enum ProjectsTypes
 {
     OnlyWindowsCore,
     NotCore_Projects,
+    ForkedOnGitHub,
 
     Bobril,
     C,

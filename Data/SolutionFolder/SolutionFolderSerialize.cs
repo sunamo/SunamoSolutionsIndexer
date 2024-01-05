@@ -1,3 +1,5 @@
+namespace SunamoSolutionsIndexer.Data.SolutionFolder;
+
 public partial class SolutionFolderSerialize : IListBoxHelperItem
 {
     public static Type type = typeof(SolutionFolderSerialize);

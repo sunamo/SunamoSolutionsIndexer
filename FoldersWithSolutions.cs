@@ -1,3 +1,5 @@
+namespace SunamoSolutionsIndexer;
+
 public class FoldersWithSolutions
 {
     #region data fields
@@ -29,7 +31,7 @@ public class FoldersWithSolutions
 
 
         solutionFolder = SH.TrimStart(solutionFolder, documentsFolder);
-        var p = SH.SplitChar(solutionFolder, AllChars.bs);
+        var p = SHSplit.SplitChar(solutionFolder, AllChars.bs);
         //var dx = p.IndexOf(SolutionsIndexerStrings.VisualStudio2017);
 
         var pr = p[0];
@@ -47,9 +49,9 @@ public class FoldersWithSolutions
 
     /// <summary>
     /// Složka ve které se má hledat na složku Projects a složky Visual Studia
-    /// 
+    ///
     /// přidává se mi zde když volám ctor FoldersWithSolutionsInstance
-    /// 
+    ///
     /// pokud nemám sln, zavolat new FoldersWithSolutions(DefaultPaths.vs, null);
     /// </summary>
     public static FoldersWithSolutionsList fwss = new FoldersWithSolutionsList();
@@ -238,7 +240,7 @@ public class FoldersWithSolutions
 
                         if (xml.Data != null)
                         {
-                            DictionaryHelper.AddOrCreate(allCsprojGlobal, FS.GetFileNameWithoutExtension(item2), item2);
+                            DictionaryHelper.AddOrCreate(allCsprojGlobal, Path.GetFileNameWithoutExtension(item2), item2);
                         }
                     }
                 }
@@ -362,7 +364,7 @@ public class FoldersWithSolutions
 
 
             solutionFolder = SH.TrimStart(solutionFolder, DefaultPaths.bp);
-            var p = SH.SplitChar(solutionFolder, AllChars.bs);
+            var p = SHSplit.SplitChar(solutionFolder, AllChars.bs);
             //var dx = p.IndexOf(SolutionsIndexerStrings.VisualStudio2017);
 
             var pr = p[0];
@@ -521,7 +523,7 @@ public class FoldersWithSolutions
             }
             else
             {
-                List<string> visualStudioFolders = CA.ToList<string>(bp); // FS.GetFolders(folderWithVisualStudioFolders, VpsHelperSunamo.IsQ ? "_" : SolutionsIndexerStrings.VisualStudio2017, SearchOption.TopDirectoryOnly));
+                List<string> visualStudioFolders = CAG.ToList<string>(bp); // FS.GetFolders(folderWithVisualStudioFolders, VpsHelperSunamo.IsQ ? "_" : SolutionsIndexerStrings.VisualStudio2017, SearchOption.TopDirectoryOnly));
                 foreach (var item in alsoAdd)
                 {
                     AddProjectsFolder(projs, item);

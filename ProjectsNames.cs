@@ -1,3 +1,5 @@
+namespace SunamoSolutionsIndexer;
+
 public class ProjectsNames
 {
     public const string sunamoWeb = "sunamo.web";
@@ -5,5 +7,5 @@ public class ProjectsNames
     public const string sunamo = "sunamo";
     public const string CredentialsWithoutDep = "CredentialsWithoutDep";
 
-    public static List<string> All = CA.ToList<string>(sunamoWeb, sunamoWithoutDep, sunamo, CredentialsWithoutDep);
+    public static List<string> All = CAG.ToList<string>(sunamoWeb, sunamoWithoutDep, sunamo, CredentialsWithoutDep);
 }

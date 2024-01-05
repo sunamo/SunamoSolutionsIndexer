@@ -1,3 +1,5 @@
+namespace SunamoSolutionsIndexer;
+
 public class SolutionsIndexerStrings
 {
     public const string VisualStudio2017 = @"vs";

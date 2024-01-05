@@ -3,26 +3,26 @@
     <TargetFramework>net8.0</TargetFramework>
     <OutputType>Library</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Version>23.12.9.1</Version>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DefineConstants>DEBUG2;DEBUG;TRACE;ASYNC</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\sunamo\SunamoCode\SunamoCode.csproj">
-    </ProjectReference>
-    <ProjectReference Include="..\SunamoExtensions\SunamoExtensions.csproj" />
-    <ProjectReference Include="..\SunamoMarkdown\SunamoMarkdown.csproj" />
-    <ProjectReference Include="..\SunamoXlf\SunamoXlf.csproj" />
-    <ProjectReference Include="..\sunamo\sunamo.csproj">
-    </ProjectReference>
+    <Content Remove="C:\Users\r\.nuget\packages\sunamoxlf\23.12.9.1\contentFiles\any\net8.0\WinSec\Readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="SunamoExceptions" Version="24.1.5.1" />
+    <PackageReference Include="SunamoExtensions" Version="24.1.5.1" />
+    <PackageReference Include="SunamoShared" Version="23.12.17.2" />
+    <ProjectReference Include="..\SunamoCode\SunamoCode.csproj" />
+    <PackageReference Include="SunamoXlf" Version="24.1.5.3" />
     <ProjectReference Include="..\win.std\win.std.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0">
-    </PackageReference>
-    <PackageReference Include="SunamoFubuCsProjFile" Version="23.11.19.2" />
-    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0">
-    </PackageReference>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0"></PackageReference>
+    <PackageReference Include="SunamoFubuCsProjFile" Version="24.1.5.1" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0"></PackageReference>
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>

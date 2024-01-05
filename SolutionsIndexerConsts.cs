@@ -1,3 +1,5 @@
+namespace SunamoSolutionsIndexer;
+
 public class SolutionsIndexerConsts
 {
     public const string BitBucket = "BitBucket";

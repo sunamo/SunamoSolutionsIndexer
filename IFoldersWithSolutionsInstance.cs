@@ -1,3 +1,5 @@
+namespace SunamoSolutionsIndexer;
+
 public interface IFoldersWithSolutions
 {
     FoldersWithSolutionsList fwss { get; }

@@ -1,3 +1,5 @@
+namespace SunamoSolutionsIndexer;
+
 public class FoldersWithSolutionsInstance : IFoldersWithSolutionsInstance
 {
     public static FoldersWithSolutionsInstance Instance = null;
@@ -65,7 +67,7 @@ public class FoldersWithSolutionsInstance : IFoldersWithSolutionsInstance
     /// A1 toSelling must be null
     /// </summary>
     /// <param name="documentsFolder"></param>
-    public List<SolutionFolder> Reload(string documentsFolder, PpkOnDrive toSelling, bool useBp = true, bool ignorePartAfterUnderscore = false)
+    public List<SolutionFolder> Reload(string documentsFolder, PpkOnDrive toSelling, bool useBp = true, bool ignorePartAfterUnderscore = false, bool sunamoAndSunamoWithoutDepProjectsAsFirst = true)
     {
         FoldersWithSolutions.PairProjectFolderWithEnum();
 
@@ -84,6 +86,18 @@ public class FoldersWithSolutionsInstance : IFoldersWithSolutionsInstance
             var solutionFolder = solutionFolders[i];
 
             SolutionFolder sf = CreateSolutionFolder(documentsFolder, solutionFolder, toSelling, useBp, projOnlyNames[i]);
+
+            var fnwoe = Path.GetFileNameWithoutExtension(solutionFolder);
+
+            if ((fnwoe == "sunamo" || fnwoe == "sunamoWithoutDep") && sunamoAndSunamoWithoutDepProjectsAsFirst)
+            {
+                var f = SunamoSolutionsIndexer._sunamo.FS.FoldersWithSubfolder(solutionFolder, ".git");
+                foreach (var item in f)
+                {
+                    SolutionFolder sf2 = CreateSolutionFolder(documentsFolder, item, toSelling, useBp, projOnlyNames[i]);
+                    solutions.Add(sf2);
+                }
+            }
 
             solutions.Add(sf);
         }
@@ -136,7 +150,7 @@ public class FoldersWithSolutionsInstance : IFoldersWithSolutionsInstance
 
                         if (xml.Data != null)
                         {
-                            DictionaryHelper.AddOrCreate(allCsprojGlobal, FS.GetFileNameWithoutExtension(item2), item2);
+                            DictionaryHelper.AddOrCreate(allCsprojGlobal, Path.GetFileNameWithoutExtension(item2), item2);
                         }
                     }
                 }
@@ -330,6 +344,7 @@ public class FoldersWithSolutionsInstance : IFoldersWithSolutionsInstance
     /// Exclude from SolutionsIndexerConsts.SolutionsExcludeWhileWorkingOnSourceCode if Debugger is attached and !A2
     /// A3 - can use wildcard
     /// </summary>
+    // , bool sunamoAndSunamoWithoutDepProjectsAsFirst = true
     public SolutionFolders Solutions(Repository r, bool loadAll = true, IList<string> skipThese = null, ProjectsTypes prioritize = ProjectsTypes.None)
     {
         SolutionFolders result = new SolutionFolders(solutions);
@@ -384,12 +399,7 @@ public class FoldersWithSolutionsInstance : IFoldersWithSolutionsInstance
             }
         }
 
-
         var l2 = result.Count;
-
-        //result.RemoveAll(d => CA.IsEqualToAnyElement(d.nameSolution, skip));
-
-        ////////DebugLogger.Instance.WriteCount("Solutions in " + documentsFolder, solutions);
         return result;
     }
 
@@ -440,7 +450,7 @@ public class FoldersWithSolutionsInstance : IFoldersWithSolutionsInstance
             }
             else
             {
-                List<string> visualStudioFolders = CA.ToList<string>(bp); // FS.GetFolders(folderWithVisualStudioFolders, VpsHelperSunamo.IsQ ? "_" : SolutionsIndexerStrings.VisualStudio2017, SearchOption.TopDirectoryOnly));
+                List<string> visualStudioFolders = CAG.ToList<string>(bp); // FS.GetFolders(folderWithVisualStudioFolders, VpsHelperSunamo.IsQ ? "_" : SolutionsIndexerStrings.VisualStudio2017, SearchOption.TopDirectoryOnly));
                 foreach (var item in alsoAdd)
                 {
                     AddProjectsFolder(projs, item);

@@ -1,50 +1,50 @@
-namespace AllProjectsSearch.Data.ProjectsFolders
+namespace SunamoSolutionsIndexer.Data.Project;
+
+public class ProjectFoldersSerialize
 {
-    public class ProjectFoldersSerialize
+    public List<ProjectFolderSerialize> projects = new List<ProjectFolderSerialize>();
+
+    public ResultWithException<ProjectFoldersSerialize> GetWithName(List<string> projectsNamesFounded, bool canMissing)
     {
-        public List<ProjectFolderSerialize> projects = new List<ProjectFolderSerialize>();
+        ResultWithException<ProjectFoldersSerialize> result = new ResultWithException<ProjectFoldersSerialize>();
+        result.Data = new ProjectFoldersSerialize();
 
-        public ResultWithException<ProjectFoldersSerialize> GetWithName(List<string> projectsNamesFounded, bool canMissing)
+        foreach (var item in projectsNamesFounded)
         {
-            ResultWithException<ProjectFoldersSerialize> result = new ResultWithException<ProjectFoldersSerialize>();
-            result.Data = new ProjectFoldersSerialize();
-
-            foreach (var item in projectsNamesFounded)
+            ProjectFolderSerialize projectFolder = projects.Find(d =>
             {
-                ProjectFolderSerialize projectFolder = projects.Find(d => {
-                    if (d.NameProject == item)
-                    {
-                        return true;
-                    }
-
-                    return false;
-                });
-
-                if (projectFolder == null)
+                if (d.NameProject == item)
                 {
-                    if (!canMissing)
-                    {
-                        result.exc = Exceptions.ElementCantBeFound("", "solutionNamesFounded", item);
-                    }
+                    return true;
                 }
-                else
+
+                return false;
+            });
+
+            if (projectFolder == null)
+            {
+                if (!canMissing)
                 {
-                    result.Data.projects.Add(projectFolder);
+                    result.exc = Exceptions.ElementCantBeFound("", "solutionNamesFounded", item);
                 }
             }
-
-            return result;
+            else
+            {
+                result.Data.projects.Add(projectFolder);
+            }
         }
 
-        public void RemoveWithName(List<string> projectNamesFounded)
+        return result;
+    }
+
+    public void RemoveWithName(List<string> projectNamesFounded)
+    {
+        int dex = -1;
+        foreach (var item in projectNamesFounded)
         {
-            int dex = -1;
-            foreach (var item in projectNamesFounded)
+            if ((dex = projects.FindIndex(d => d.NameProject == item)) != -1)
             {
-                if ((dex = projects.FindIndex(d => d.NameProject == item)) != -1)
-                {
-                    projects.RemoveAt(dex);
-                }
+                projects.RemoveAt(dex);
             }
         }
     }

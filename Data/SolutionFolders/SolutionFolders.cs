@@ -1,3 +1,5 @@
+namespace SunamoSolutionsIndexer.Data.SolutionFolders;
+
 public class SolutionFolders : List<SolutionFolder>
 {
     Dictionary<string, SolutionFolder> index = null;
