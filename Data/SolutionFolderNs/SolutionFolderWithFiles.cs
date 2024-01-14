@@ -41,8 +41,8 @@ public class SolutionFolderWithFiles : SolutionFolder
         for (int i = 0; i < files.Count; i++)
         {
             var item = files[i];
-            string ext = Path.GetExtension(item).TrimStart(AllCharsSE.dot);
-            DictionaryHelperSE.AddOrCreate(filesOfExtension, ext, item);
+            string ext = FS.GetExtension(item).TrimStart(AllCharsSE.dot);
+            DictionaryHelper.AddOrCreate(filesOfExtension, ext, item);
         }
 
 
@@ -57,7 +57,7 @@ public class SolutionFolderWithFiles : SolutionFolder
             overallSize += fs;
             filesAndSizes.Add(i, fs);
 
-            string ext = Path.GetExtension(item).TrimStart(AllCharsSE.dot);
+            string ext = FS.GetExtension(item).TrimStart(AllCharsSE.dot);
             TypeOfExtension extType = AllExtensionsHelper.FindTypeWithDot(ext);
 
             if (!sizeOfExtensionTypes.ContainsKey(extType))

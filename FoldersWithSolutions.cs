@@ -1,3 +1,5 @@
+using SunamoI18N.Values;
+
 namespace SunamoSolutionsIndexer;
 
 public class FoldersWithSolutions

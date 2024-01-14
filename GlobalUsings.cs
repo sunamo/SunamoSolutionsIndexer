@@ -6,7 +6,6 @@
 //global using sunamo.Essential;
 //global using sunamo.Generators;
 //global using sunamo.Interfaces;
-global using sunamo;
 global using System.Collections.Generic;
 global using System.Collections.ObjectModel;
 global using System.Diagnostics;
