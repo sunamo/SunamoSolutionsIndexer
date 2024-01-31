@@ -1,6 +1,3 @@
-using SunamoInterfaces.Interfaces;
-using SunamoSolutionsIndexer.Interfaces;
-
 namespace SunamoSolutionsIndexer.Data.SolutionFolderNs;
 
 public partial class SolutionFolderSerialize : IListBoxHelperItem, ISolutionFolderSerialize
@@ -52,7 +49,7 @@ public partial class SolutionFolderSerialize : IListBoxHelperItem, ISolutionFold
             _nameSolution = FS.GetFileName(value.TrimEnd(AllChars.bs));
             if (SolutionsIndexerSettings.ignorePartAfterUnderscore)
             {
-                _nameSolution = SH.RemoveAfterLast(_nameSolution, AllChars.lowbar);
+                _nameSolution = SHParts.RemoveAfterLast(_nameSolution, AllChars.lowbar);
             }
         }
     }

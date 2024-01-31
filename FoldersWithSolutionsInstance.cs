@@ -91,7 +91,7 @@ public class FoldersWithSolutionsInstance : IFoldersWithSolutionsInstance
 
             if ((fnwoe == "sunamo" || fnwoe == "sunamoWithoutLocalDep") && sunamoAndSunamoWithoutDepProjectsAsFirst)
             {
-                var f = SunamoSolutionsIndexer._sunamo.FS.FoldersWithSubfolder(solutionFolder, ".git");
+                List<string> f = new List<string>(); //FSND.FoldersWithSubfolder(solutionFolder, ".git");
                 foreach (var item in f)
                 {
                     SolutionFolder sf2 = CreateSolutionFolder(documentsFolder, item, toSelling, useBp, projOnlyNames[i]);

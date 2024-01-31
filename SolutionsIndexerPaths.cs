@@ -1,6 +1,3 @@
-using SunamoEnums.Enums;
-using SunamoPlatformUwpInterop.AppData;
-
 namespace SunamoSolutionsIndexer;
 
 public class SolutionsIndexerPaths

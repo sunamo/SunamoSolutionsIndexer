@@ -1,7 +1,3 @@
-using SunamoDevCode.Values;
-using SunamoSolutionsIndexer.Args;
-using SunamoSolutionsIndexer.Interfaces;
-
 namespace SunamoSolutionsIndexer.Data.SolutionFolderNs;
 
 public interface IProjectType
@@ -283,7 +279,7 @@ public class SolutionFolder : SolutionFolderSerialize, IProjectType, ISolutionFo
         #endregion
 
         // Kontroluje mi pouze na cestu zda existuje. soubor jako takový nemusí existovat
-        //if (FS.ExistsFile(net4))
+        //if (File.Exists(net4))
         //{
         //    return null;
         //}

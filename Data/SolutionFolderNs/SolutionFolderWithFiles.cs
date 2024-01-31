@@ -1,5 +1,3 @@
-using SunamoEnums.Enums;
-
 namespace SunamoSolutionsIndexer.Data.SolutionFolderNs;
 
 public class SolutionFolderWithFiles : SolutionFolder
