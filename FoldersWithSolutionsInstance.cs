@@ -189,7 +189,7 @@ public class FoldersWithSolutionsInstance : IFoldersWithSolutionsInstance
                 }
                 else
                 {
-                    projectsWithDuplicateName.Add(FS.GetFileName(item.Key));
+                    projectsWithDuplicateName.Add(Path.GetFileName(item.Key));
 
                     for (int i = 1; i < item.Value.Count; i++)
                     {
@@ -240,7 +240,7 @@ public class FoldersWithSolutionsInstance : IFoldersWithSolutionsInstance
 
         if (projName == null)
         {
-            projName = FS.GetFileName(solutionFolder);
+            projName = Path.GetFileName(solutionFolder);
         }
         SolutionFolder sf = null;
         if (sfs != null)
@@ -418,7 +418,7 @@ public class FoldersWithSolutionsInstance : IFoldersWithSolutionsInstance
             bp = folderWithVisualStudioFolders;
         }
 
-        if (FS.ExistsDirectory(bp))
+        if (Directory.Exists(bp))
         {
             if (DefaultPaths.bpVps == bp)
             {
@@ -430,7 +430,7 @@ public class FoldersWithSolutionsInstance : IFoldersWithSolutionsInstance
 
                 try
                 {
-                    slozkySJazyky = FS.GetFolders(bp);
+                    slozkySJazyky = Directory.GetDirectories(bp).ToList();
                 }
                 catch (Exception ex)
                 {
@@ -440,7 +440,7 @@ public class FoldersWithSolutionsInstance : IFoldersWithSolutionsInstance
                 foreach (var item2 in slozkySJazyky)
                 {
                     #region New
-                    string pfn = FS.GetFileName(item2);
+                    string pfn = Path.GetFileName(item2);
                     if (SolutionsIndexerHelper.IsTheSolutionsFolder(pfn))
                     {
                         AddProjectsFolder(projs, item2);
@@ -450,7 +450,7 @@ public class FoldersWithSolutionsInstance : IFoldersWithSolutionsInstance
             }
             else
             {
-                List<string> visualStudioFolders = CAG.ToList<string>(bp); // FS.GetFolders(folderWithVisualStudioFolders, VpsHelperSunamo.IsQ ? "_" : SolutionsIndexerStrings.VisualStudio2017, SearchOption.TopDirectoryOnly));
+                List<string> visualStudioFolders = new List<string>([bp]); // Directory.GetDirectories(folderWithVisualStudioFolders, VpsHelperSunamo.IsQ ? "_" : SolutionsIndexerStrings.VisualStudio2017, SearchOption.TopDirectoryOnly));
                 foreach (var item in alsoAdd)
                 {
                     AddProjectsFolder(projs, item);
@@ -461,7 +461,7 @@ public class FoldersWithSolutionsInstance : IFoldersWithSolutionsInstance
                     List<string> slozkySJazykyOutsideVs17 = new List<string>();
                     try
                     {
-                        slozkySJazyky = FS.GetFolders(item);
+                        slozkySJazyky = Directory.GetDirectories(item).ToList();
                     }
                     catch (Exception ex)
                     {
@@ -473,7 +473,7 @@ public class FoldersWithSolutionsInstance : IFoldersWithSolutionsInstance
                     foreach (var item2 in slozkySJazyky)
                     {
                         #region New
-                        string pfn = FS.GetFileName(item2);
+                        string pfn = Path.GetFileName(item2);
                         if (SolutionsIndexerHelper.IsTheSolutionsFolder(pfn))
                         {
                             AddProjectsFolder(projs, item2);
@@ -484,9 +484,9 @@ public class FoldersWithSolutionsInstance : IFoldersWithSolutionsInstance
                     foreach (var item2 in slozkySJazykyOutsideVs17)
                     {
                         #region New
-                        if (FS.ExistsDirectory(item2))
+                        if (Directory.Exists(item2))
                         {
-                            string pfn = FS.GetFileName(item2);
+                            string pfn = Path.GetFileName(item2);
 
                             AddProjectsFolder(projs, item2);
                         }
@@ -501,7 +501,7 @@ public class FoldersWithSolutionsInstance : IFoldersWithSolutionsInstance
         }
         else
         {
-            ThrowEx.Custom(folderWithVisualStudioFolders + " not exists, therefore will be return none slsn");
+            throw new Exception(folderWithVisualStudioFolders + " not exists, therefore will be return none slsn");
         }
         CAChangeContent.ChangeContent0(null, projs, SH.FirstCharUpper);
         return projs;
@@ -527,10 +527,10 @@ public class FoldersWithSolutionsInstance : IFoldersWithSolutionsInstance
         normal = new List<string>();
         try
         {
-            var slo = FS.GetFolders(sloz);
+            var slo = Directory.GetDirectories(sloz);
             foreach (string var in slo)
             {
-                string nazev = FS.GetFileName(var);
+                string nazev = Path.GetFileName(var);
                 if (nazev.StartsWith(AllStrings.lowbar))
                 {
                     spec.Add(var);

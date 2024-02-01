@@ -33,13 +33,13 @@ public class SolutionFolderWithFiles : SolutionFolder
         sizeOfExtensionTypes = new Dictionary<TypeOfExtension, long>();
         sizeOfExtension = new Dictionary<string, long>();
 
-        files = FS.GetFiles(fullPathFolder, AllStringsSE.asterisk, SearchOption.AllDirectories);
+        files = Directory.GetFiles(fullPathFolder, AllStringsSE.asterisk, SearchOption.AllDirectories).ToList();
         filesOfExtension = new Dictionary<string, List<string>>();
 
         for (int i = 0; i < files.Count; i++)
         {
             var item = files[i];
-            string ext = FS.GetExtension(item).TrimStart(AllCharsSE.dot);
+            string ext = Path.GetExtension(item).TrimStart(AllCharsSE.dot);
             DictionaryHelper.AddOrCreate(filesOfExtension, ext, item);
         }
 
@@ -51,11 +51,11 @@ public class SolutionFolderWithFiles : SolutionFolder
         for (int i = 0; i < files.Count; i++)
         {
             var item = files[i];
-            long fs = FS.GetFileSize(item);
+            long fs = new FileInfo(item).Length;
             overallSize += fs;
             filesAndSizes.Add(i, fs);
 
-            string ext = FS.GetExtension(item).TrimStart(AllCharsSE.dot);
+            string ext = Path.GetExtension(item).TrimStart(AllCharsSE.dot);
             TypeOfExtension extType = AllExtensionsHelper.FindTypeWithDot(ext);
 
             if (!sizeOfExtensionTypes.ContainsKey(extType))

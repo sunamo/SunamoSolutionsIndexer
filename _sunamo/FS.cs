@@ -1,5 +1,7 @@
+namespace SunamoSolutionsIndexer._sunamo;
+
 //namespace SunamoSolutionsIndexer._sunamo;
-//public class FS
+//internal class FS
 //{
 
 //}

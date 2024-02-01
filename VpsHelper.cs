@@ -15,7 +15,7 @@ public class VpsHelper
         get => VpsHelperSunamo.path;
     }
 
-    static PushSolutionsData pushSolutionsData = new PushSolutionsData();
+    static SunamoWinStd.PushSolutionsData pushSolutionsData = new SunamoWinStd.PushSolutionsData();
     //public static PpkOnDrive list = new PpkOnDrive(AppData.ci.GetFile(AppFolders.Data, "SlnVps.txt"));
     //public static PpkOnDrive listMain = new PpkOnDrive(AppData.ci.GetFile(AppFolders.Data, "SlnVpsMain.txt"));
     public static PpkOnDrive listVpsNew = new PpkOnDrive(SolutionsIndexerPaths.listVpsNew);
@@ -31,7 +31,7 @@ public class VpsHelper
     {
         if (IsVps)
         {
-            var folders = FS.GetFolders(path, SearchOption.TopDirectoryOnly);
+            var folders = Directory.GetDirectories(path, "*", SearchOption.TopDirectoryOnly).ToList();
             bool release = true;
             string pushArgs = string.Empty;
             string commitMessage = sess.i18n(XlfKeys.FromVPS) + " " + DateTime.Today.ToShortDateString();
@@ -71,7 +71,7 @@ public class VpsHelper
     {
         if (IsVps)
         {
-            var folders = FS.GetFolders(path, SearchOption.TopDirectoryOnly);
+            var folders = Directory.GetDirectories(path, "*", SearchOption.TopDirectoryOnly).ToList();
             GitHelper.PowershellForPull(folders);
         }
         else

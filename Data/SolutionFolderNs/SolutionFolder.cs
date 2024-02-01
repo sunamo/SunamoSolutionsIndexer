@@ -1,4 +1,8 @@
+
 namespace SunamoSolutionsIndexer.Data.SolutionFolderNs;
+using SunamoSolutionsIndexer.Args;
+using SunamoSolutionsIndexer.Interfaces;
+
 
 public interface IProjectType
 {
@@ -221,7 +225,7 @@ public class SolutionFolder : SolutionFolderSerialize, IProjectType, ISolutionFo
 
         var projectFolderPath = Path.Combine(solutionFolder, exeName);
 
-        if (!FS.ExistsDirectory(projectFolderPath))
+        if (!Directory.Exists(projectFolderPath))
         {
             return null;
         }
@@ -247,15 +251,15 @@ public class SolutionFolder : SolutionFolderSerialize, IProjectType, ISolutionFo
             net7Windows += "win-x64\\publish\\";
         }
 
-        var b1 = FS.ExistsDirectory(net7);
-        var b2 = FS.ExistsDirectory(net7Windows);
+        var b1 = Directory.Exists(net7);
+        var b2 = Directory.Exists(net7Windows);
 
         string exePath = null;
 
         if (b1)
         {
-            exePath = FS.Combine(net7, exeName + ".exe");
-            if (FSSE.ExistsFile(exePath))
+            exePath = Path.Combine(net7, exeName + ".exe");
+            if (File.Exists(exePath))
             {
                 existingExeReleaseFolder = net7;
             }
@@ -266,8 +270,8 @@ public class SolutionFolder : SolutionFolderSerialize, IProjectType, ISolutionFo
         }
         if (b2 && existingExeReleaseFolder == null)
         {
-            exePath = FS.Combine(net7Windows, exeName + ".exe");
-            if (FSSE.ExistsFile(exePath))
+            exePath = Path.Combine(net7Windows, exeName + ".exe");
+            if (File.Exists(exePath))
             {
                 existingExeReleaseFolder = net7Windows;
             }
@@ -296,23 +300,23 @@ public class SolutionFolder : SolutionFolderSerialize, IProjectType, ISolutionFo
             return null;
         }
 
-        var result = FS.Combine(existingExeReleaseFolder, exeNameWithExt);
+        var result = Path.Combine(existingExeReleaseFolder, exeNameWithExt);
         return result;
     }
 
     private string FindExistingFolderWithRightArchitecture(string net7, string exeNameWithExt)
     {
         // https://learn.microsoft.com/en-us/dotnet/core/rid-catalog
-        var maybe = FS.Combine(net7, "win-x64", exeNameWithExt);
+        var maybe = Path.Combine(net7, "win-x64", exeNameWithExt);
 
-        if (FSSE.ExistsFile(maybe))
+        if (File.Exists(maybe))
         {
             return FSSE.GetDirectoryName(maybe);
         }
 
-        maybe = FS.Combine(net7, "win-x86", exeNameWithExt);
+        maybe = Path.Combine(net7, "win-x86", exeNameWithExt);
 
-        if (FSSE.ExistsFile(maybe))
+        if (File.Exists(maybe))
         {
             return FSSE.GetDirectoryName(maybe);
         }
@@ -326,7 +330,7 @@ public class SolutionFolder : SolutionFolderSerialize, IProjectType, ISolutionFo
     public bool HaveGitFolder()
     {
         var f = Path.Combine(fullPathFolder, VisualStudioTempFse.gitFolderName);
-        bool vr = FS.ExistsDirectory(f);
+        bool vr = Directory.Exists(f);
 
         return vr;
     }

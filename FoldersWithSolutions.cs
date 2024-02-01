@@ -152,16 +152,16 @@ public class FoldersWithSolutions
         }
 
         var p2 = DefaultPaths.bp;
-        if (!FS.ExistsDirectory(p2))
+        if (!Directory.Exists(p2))
         {
             return;
         }
 
-        var folders = FS.GetFolders(p2, "*", SearchOption.TopDirectoryOnly);
+        var folders = Directory.GetDirectories(p2, "*", SearchOption.TopDirectoryOnly);
 
         foreach (var item in folders)
         {
-            var fn = FS.GetFileName(item);
+            var fn = Path.GetFileName(item);
             if (fn.EndsWith(SolutionsIndexerStrings.ProjectPostfix))
             {
                 ProjectsTypes p = ProjectsTypes.None;
@@ -183,7 +183,7 @@ public class FoldersWithSolutions
 
                 if (p == ProjectsTypes.None)
                 {
-                    ThrowEx.Custom(sess.i18n(XlfKeys.CanTAssignToEnumTypeOfFolder) + " " + item);
+                    throw new Exception(sess.i18n(XlfKeys.CanTAssignToEnumTypeOfFolder) + " " + item);
                 }
 
                 projectTypes.Add(p, l);
@@ -279,7 +279,7 @@ public class FoldersWithSolutions
                 }
                 else
                 {
-                    projectsWithDuplicateName.Add(FS.GetFileName(item.Key));
+                    projectsWithDuplicateName.Add(Path.GetFileName(item.Key));
 
                     for (int i = 1; i < item.Value.Count; i++)
                     {
@@ -330,7 +330,7 @@ public class FoldersWithSolutions
 
         if (projName == null)
         {
-            projName = FS.GetFileName(solutionFolder);
+            projName = Path.GetFileName(solutionFolder);
         }
         SolutionFolder sf = null;
         if (sfs != null)
@@ -515,7 +515,7 @@ public class FoldersWithSolutions
         List<string> projs = new List<string>();
         var bp = BasePathsHelper.actualPlatform;
 
-        if (FS.ExistsDirectory(bp))
+        if (Directory.Exists(bp))
         {
             if (DefaultPaths.bpVps == bp)
             {
@@ -523,7 +523,7 @@ public class FoldersWithSolutions
             }
             else
             {
-                List<string> visualStudioFolders = CAG.ToList<string>(bp); // FS.GetFolders(folderWithVisualStudioFolders, VpsHelperSunamo.IsQ ? "_" : SolutionsIndexerStrings.VisualStudio2017, SearchOption.TopDirectoryOnly));
+                List<string> visualStudioFolders = new List<string>([bp]); // Directory.GetDirectories(folderWithVisualStudioFolders, VpsHelperSunamo.IsQ ? "_" : SolutionsIndexerStrings.VisualStudio2017, SearchOption.TopDirectoryOnly));
                 foreach (var item in alsoAdd)
                 {
                     AddProjectsFolder(projs, item);
@@ -534,7 +534,7 @@ public class FoldersWithSolutions
                     List<string> slozkySJazykyOutsideVs17 = new List<string>();
                     try
                     {
-                        slozkySJazyky = FS.GetFolders(item);
+                        slozkySJazyky = Directory.GetDirectories(item).ToList();
                     }
                     catch (Exception ex)
                     {
@@ -546,7 +546,7 @@ public class FoldersWithSolutions
                     foreach (var item2 in slozkySJazyky)
                     {
                         #region New
-                        string pfn = FS.GetFileName(item2);
+                        string pfn = Path.GetFileName(item2);
                         if (SolutionsIndexerHelper.IsTheSolutionsFolder(pfn))
                         {
                             AddProjectsFolder(projs, item2);
@@ -557,9 +557,9 @@ public class FoldersWithSolutions
                     foreach (var item2 in slozkySJazykyOutsideVs17)
                     {
                         #region New
-                        if (FS.ExistsDirectory(item2))
+                        if (Directory.Exists(item2))
                         {
-                            string pfn = FS.GetFileName(item2);
+                            string pfn = Path.GetFileName(item2);
 
                             AddProjectsFolder(projs, item2);
                         }
@@ -574,7 +574,7 @@ public class FoldersWithSolutions
         }
         else
         {
-            ThrowEx.Custom(folderWithVisualStudioFolders + " not exists, therefore will be return none slsn");
+            throw new Exception(folderWithVisualStudioFolders + " not exists, therefore will be return none slsn");
         }
         CAChangeContent.ChangeContent0(null, projs, SH.FirstCharUpper);
         return projs;
@@ -600,10 +600,10 @@ public class FoldersWithSolutions
         normal = new List<string>();
         try
         {
-            var slo = FS.GetFolders(sloz);
+            var slo = Directory.GetDirectories(sloz);
             foreach (string var in slo)
             {
-                string nazev = FS.GetFileName(var);
+                string nazev = Path.GetFileName(var);
                 if (nazev.StartsWith(AllStrings.lowbar))
                 {
                     spec.Add(var);

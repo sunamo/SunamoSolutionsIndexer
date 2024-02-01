@@ -7,5 +7,5 @@ public class ProjectsNames
     public const string sunamo = "sunamo";
     public const string CredentialsWithoutDep = "CredentialsWithoutDep";
 
-    public static List<string> All = CAG.ToList<string>(sunamoWeb, sunamoWithoutLocalDep, sunamo, CredentialsWithoutDep);
+    public static List<string> All = new List<string>([sunamoWeb, sunamoWithoutLocalDep, sunamo, CredentialsWithoutDep]);
 }

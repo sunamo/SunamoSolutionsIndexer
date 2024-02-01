@@ -1,3 +1,5 @@
+namespace SunamoSolutionsIndexer.Properties;
+
 //namespace SunamoSolutionsIndexer.Properties;
 
 //// General Information about an assembly is controlled through the following

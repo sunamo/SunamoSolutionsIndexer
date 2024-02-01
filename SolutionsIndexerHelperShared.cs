@@ -66,7 +66,7 @@ public partial class SolutionsIndexerHelper
     public static List<string> ProjectsInSolution(bool removeVsFolders, string fp, bool onlynames = true)
     {
         // TODO: Filter auto created files, then uncomment
-        List<string> d = FS.GetFolders(fp);
+        List<string> d = Directory.GetDirectories(fp).ToList();
         d = FS.OnlyNamesNoDirectEdit(d);
         RemoveVsFolders(removeVsFolders, d);
 
@@ -94,10 +94,10 @@ public partial class SolutionsIndexerHelper
     public static string GetDisplayedSolutionName(string item)
     {
         List<string> tokens = new List<string>();
-        tokens.Add(FS.GetFileName(item.TrimEnd(AllChars.bs)));
+        tokens.Add(Path.GetFileName(item.TrimEnd(AllChars.bs)));
         while (true)
         {
-            item = FS.GetDirectoryName(item);
+            item = Path.GetDirectoryName(item);
             if (CA.ContainsElement<string>(FoldersWithSolutions.onlyRealLoadedSolutionsFolders, item))
             {
                 break;
@@ -108,10 +108,10 @@ public partial class SolutionsIndexerHelper
                 break;
             }
 
-            var fn = FS.GetFileName(item);
+            var fn = Path.GetFileName(item);
             if (fn.StartsWith(SolutionsIndexerConsts.VisualStudio + " "))
             {
-                tokens.Add(FS.GetFileName(item.TrimEnd(AllChars.bs)).Replace(SolutionsIndexerConsts.VisualStudio + " ", ""));
+                tokens.Add(Path.GetFileName(item.TrimEnd(AllChars.bs)).Replace(SolutionsIndexerConsts.VisualStudio + " ", ""));
                 break;
             }
 
@@ -120,7 +120,7 @@ public partial class SolutionsIndexerHelper
                 break;
             }
 
-            tokens.Add(FS.GetFileName(item.TrimEnd(AllChars.bs)));
+            tokens.Add(Path.GetFileName(item.TrimEnd(AllChars.bs)));
         }
 
         tokens.Reverse();
@@ -130,18 +130,18 @@ public partial class SolutionsIndexerHelper
     public static List<string> ModulesInSolution(List<string> projects, string fullPathFolder, bool selling, PpkOnDrive toSelling)
     {
         List<string> result = new List<string>();
-        var slnName = FS.GetFileName(fullPathFolder);
+        var slnName = Path.GetFileName(fullPathFolder);
 
         foreach (var item in projects)
         {
             var path = Path.Combine(fullPathFolder, Path.GetFileNameWithoutExtension(item));
             var projectName = Path.GetFileNameWithoutExtension(item);
 
-            slnName = FS.GetFileName(fullPathFolder);
+            slnName = Path.GetFileName(fullPathFolder);
             AddModules(selling, toSelling, result, slnName, projectName, path, "UserControl");
-            slnName = FS.GetFileName(fullPathFolder);
+            slnName = Path.GetFileName(fullPathFolder);
             AddModules(selling, toSelling, result, slnName, projectName, path, "UC");
-            slnName = FS.GetFileName(fullPathFolder);
+            slnName = Path.GetFileName(fullPathFolder);
             AddModules(selling, toSelling, result, slnName, projectName, path, "UserControls");
 
         }
@@ -167,13 +167,17 @@ public partial class SolutionsIndexerHelper
     private static void AddModules(string path, string SlnProject, List<string> result, bool selling, PpkOnDrive toSelling)
     {
 
-        if (FS.ExistsDirectory(path))
+        if (Directory.Exists(path))
         {
             var files = FS.GetFiles(path, FS.MascFromExtension(AllExtensions.xaml), System.IO.SearchOption.TopDirectoryOnly, new GetFilesArgs { _trimA1AndLeadingBs = true });
-            files = FS.GetFileNamesWoExtension(files);
+            for (int i = 0; i < files.Count; i++)
+            {
+                files[i] = Path.GetFileNameWithoutExtension(files[i]);
+            }
+            //files = Path.GetFileNamesWoExtension(files);
             foreach (var item in files)
             {
-                var module = FS.GetFileName(item);
+                var module = Path.GetFileName(item);
                 var s = SlnProject + AllStrings.bs + module;
                 if (toSelling.Contains(s))
                 {

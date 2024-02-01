@@ -1,4 +1,8 @@
+
 namespace SunamoSolutionsIndexer.Data.SolutionFolderNs;
+using SunamoSolutionsIndexer.Interfaces;
+using SunamoStringParts;
+
 
 public partial class SolutionFolderSerialize : IListBoxHelperItem, ISolutionFolderSerialize
 {
@@ -46,7 +50,7 @@ public partial class SolutionFolderSerialize : IListBoxHelperItem, ISolutionFold
         {
             ThrowEx.CheckBackslashEnd(Exc.GetStackTrace(), value);
             _fullPathFolder = value;
-            _nameSolution = FS.GetFileName(value.TrimEnd(AllChars.bs));
+            _nameSolution = Path.GetFileName(value.TrimEnd(AllChars.bs));
             if (SolutionsIndexerSettings.ignorePartAfterUnderscore)
             {
                 _nameSolution = SHParts.RemoveAfterLast(_nameSolution, AllChars.lowbar);
