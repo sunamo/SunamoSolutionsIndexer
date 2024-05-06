@@ -7,7 +7,7 @@
     <Description>Working with solutions in filesystem - searching etc.</Description>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DefineConstants>DEBUG2;DEBUG;TRACE;ASYNC</DefineConstants>
+    <DefineConstants>DEBUG2;DEBUG;TRACE;ASYNC;SunamoSolutionsIndexer</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <!--<PackageReference Include="SunamoDevCode" Version="24.1.24.1" />
@@ -21,9 +21,9 @@
     <PackageReference Include="SunamoFubuCsProjFile" Version="24.2.6.2" />
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>
+    <DefineConstants>$(DefineConstants);ASYNC;SunamoSolutionsIndexer</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>
+    <DefineConstants>$(DefineConstants);ASYNC;SunamoSolutionsIndexer</DefineConstants>
   </PropertyGroup>
 </Project>
