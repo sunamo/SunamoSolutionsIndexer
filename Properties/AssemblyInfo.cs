@@ -1,4 +1,4 @@
-namespace SunamoSolutionsIndexer.Properties;
+namespace SunamoSolutionsIndexer;
 
 //namespace SunamoSolutionsIndexer.Properties;
 
