@@ -1,3 +1,5 @@
+
+namespace SunamoSolutionsIndexer;
 public class AllStrings
 {
     public const string dot = ".";

@@ -1,3 +1,5 @@
+
+namespace SunamoSolutionsIndexer;
 using System.Diagnostics;
 using System.Text;
 
