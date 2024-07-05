@@ -1,4 +1,4 @@
-namespace SunamoSolutionsIndexer;
+namespace SunamoSolutionsIndexer._sunamo.SunamoValues;
 
 
 

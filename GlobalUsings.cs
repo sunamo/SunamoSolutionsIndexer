@@ -6,3 +6,8 @@ global using System;
 global using System.IO;
 global using System.Diagnostics.CodeAnalysis;
 global using System.Reflection;
+global using SunamoSolutionsIndexer._sunamo.SunamoStringGetLines;
+global using SunamoSolutionsIndexer._sunamo.SunamoValues;
+global using SunamoSolutionsIndexer._sunamo.SunamoXlfKeys;
+global using SunamoSolutionsIndexer._sunamo.SunamoExceptions.OnlyInSE;
+global using SunamoSolutionsIndexer._sunamo.SunamoExceptions._AddedToAllCsproj;
