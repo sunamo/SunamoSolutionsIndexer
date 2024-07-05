@@ -11,3 +11,6 @@ global using SunamoSolutionsIndexer._sunamo.SunamoValues;
 global using SunamoSolutionsIndexer._sunamo.SunamoXlfKeys;
 global using SunamoSolutionsIndexer._sunamo.SunamoExceptions.OnlyInSE;
 global using SunamoSolutionsIndexer._sunamo.SunamoExceptions._AddedToAllCsproj;
+global using System.Diagnostics;
+global using System.Net;
+global using System.Threading.Tasks;
