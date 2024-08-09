@@ -1,36 +1,36 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <OutputType>Library</OutputType>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <Version>24.7.16.1</Version>
-    <Description>Working with solutions in filesystem - searching etc.</Description>
-    <Authors>www.sunamo.cz</Authors>
-    <Copyright>www.sunamo.cz</Copyright>
-    <PackageProjectUrl>https://sunamo.cz/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/sunamo/SunamoSolutionsIndexer.git</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReadmeFile>readme.md</PackageReadmeFile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DefineConstants>DEBUG2;DEBUG;TRACE;ASYNC;SunamoSolutionsIndexer;SunamoSolutionsIndexer.csproj</DefineConstants>
-  </PropertyGroup>
-  <ItemGroup>
-    <!--<PackageReference Include="SunamoDevCode" Version="24.1.24.1" />
-    <PackageReference Include="SunamoFileSystemNoDeps" Version="24.2.1.1" />
-    <PackageReference Include="SunamoStringParts" Version="24.2.1.1" />
-    <PackageReference Include="SunamoWinStd" Version="24.2.1.3" />-->
-    <None Include="readme.md" Pack="True" PackagePath="." />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0">
-    </PackageReference>
-  </ItemGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>$(DefineConstants);ASYNC;SunamoSolutionsIndexer;SunamoSolutionsIndexer.csproj</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DefineConstants>$(DefineConstants);ASYNC;SunamoSolutionsIndexer;SunamoSolutionsIndexer.csproj</DefineConstants>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <OutputType>Library</OutputType>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <Version>24.7.16.1</Version>
+        <Description>Working with solutions in filesystem - searching etc.</Description>
+        <Authors>www.sunamo.cz</Authors>
+        <Copyright>www.sunamo.cz</Copyright>
+        <PackageProjectUrl>https://sunamo.cz/</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/sunamo/SunamoSolutionsIndexer.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageReadmeFile>readme.md</PackageReadmeFile>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DefineConstants>DEBUG2;DEBUG;TRACE;ASYNC;SunamoSolutionsIndexer;SunamoSolutionsIndexer.csproj</DefineConstants>
+    </PropertyGroup>
+    <ItemGroup>
+        <!--<PackageReference Include="SunamoDevCode" Version="24.1.24.1" />
+        <PackageReference Include="SunamoFileSystemNoDeps" Version="24.2.1.1" />
+        <PackageReference Include="SunamoStringParts" Version="24.2.1.1" />
+        <PackageReference Include="SunamoWinStd" Version="24.2.1.3" />-->
+        <None Include="readme.md" Pack="True" PackagePath="."/>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.CSharp" Version="4.7.0">
+        </PackageReference>
+    </ItemGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DefineConstants>$(DefineConstants);ASYNC;SunamoSolutionsIndexer;SunamoSolutionsIndexer.csproj</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <DefineConstants>$(DefineConstants);ASYNC;SunamoSolutionsIndexer;SunamoSolutionsIndexer.csproj</DefineConstants>
+    </PropertyGroup>
 </Project>
