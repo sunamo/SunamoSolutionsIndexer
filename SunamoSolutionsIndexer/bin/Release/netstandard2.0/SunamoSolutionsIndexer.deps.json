@@ -7,7 +7,7 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "SunamoSolutionsIndexer/26.6.21.3": {
+      "SunamoSolutionsIndexer/26.6.21.4": {
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
           "SunamoDevCodeBase": "26.6.21.1"
@@ -174,7 +174,7 @@
     }
   },
   "libraries": {
-    "SunamoSolutionsIndexer/26.6.21.3": {
+    "SunamoSolutionsIndexer/26.6.21.4": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
