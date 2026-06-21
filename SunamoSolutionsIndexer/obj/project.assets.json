@@ -1541,7 +1541,7 @@
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "26.6.21.4",
+    "version": "26.6.21.5",
     "restore": {
       "projectUniqueName": "E:\\vs\\Projects\\PlatformIndependentNuGetPackages\\SunamoSolutionsIndexer\\SunamoSolutionsIndexer\\SunamoSolutionsIndexer.csproj",
       "projectName": "SunamoSolutionsIndexer",

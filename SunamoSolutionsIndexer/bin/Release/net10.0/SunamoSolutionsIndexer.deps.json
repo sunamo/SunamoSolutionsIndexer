@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v10.0": {
-      "SunamoSolutionsIndexer/26.6.21.4": {
+      "SunamoSolutionsIndexer/26.6.21.5": {
         "dependencies": {
           "SunamoDevCodeBase": "26.6.21.1"
         },
@@ -85,7 +85,7 @@
     }
   },
   "libraries": {
-    "SunamoSolutionsIndexer/26.6.21.4": {
+    "SunamoSolutionsIndexer/26.6.21.5": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
