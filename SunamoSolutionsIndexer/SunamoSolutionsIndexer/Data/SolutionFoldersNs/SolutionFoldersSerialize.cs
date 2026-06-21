@@ -1,4 +1,4 @@
-namespace SunamoDevCode.SunamoSolutionsIndexer.Data.SolutionFoldersNs;
+namespace SunamoSolutionsIndexer.Data.SolutionFoldersNs;
 
 /// <summary>
 /// Serializable collection of solution folders

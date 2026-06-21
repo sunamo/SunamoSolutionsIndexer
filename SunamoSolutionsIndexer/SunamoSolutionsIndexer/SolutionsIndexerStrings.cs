@@ -1,4 +1,4 @@
-namespace SunamoDevCode.SunamoSolutionsIndexer;
+namespace SunamoSolutionsIndexer;
 
 /// <summary>
 /// String constants for Solutions Indexer.

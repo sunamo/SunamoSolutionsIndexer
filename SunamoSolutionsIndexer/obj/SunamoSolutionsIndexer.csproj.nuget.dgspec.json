@@ -5,7 +5,7 @@
   },
   "projects": {
     "E:\\vs\\Projects\\PlatformIndependentNuGetPackages\\SunamoDevCodeBase\\SunamoDevCodeBase\\SunamoDevCodeBase.csproj": {
-      "version": "26.5.18.8",
+      "version": "26.6.21.1",
       "restore": {
         "projectUniqueName": "E:\\vs\\Projects\\PlatformIndependentNuGetPackages\\SunamoDevCodeBase\\SunamoDevCodeBase\\SunamoDevCodeBase.csproj",
         "projectName": "SunamoDevCodeBase",
@@ -1234,7 +1234,7 @@
       }
     },
     "E:\\vs\\Projects\\PlatformIndependentNuGetPackages\\SunamoSolutionsIndexer\\SunamoSolutionsIndexer\\SunamoSolutionsIndexer.csproj": {
-      "version": "26.5.18.8",
+      "version": "26.6.21.2",
       "restore": {
         "projectUniqueName": "E:\\vs\\Projects\\PlatformIndependentNuGetPackages\\SunamoSolutionsIndexer\\SunamoSolutionsIndexer\\SunamoSolutionsIndexer.csproj",
         "projectName": "SunamoSolutionsIndexer",

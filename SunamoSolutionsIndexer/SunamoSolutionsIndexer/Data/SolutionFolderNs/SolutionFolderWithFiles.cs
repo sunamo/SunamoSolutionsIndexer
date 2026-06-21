@@ -1,4 +1,4 @@
-namespace SunamoDevCode.SunamoSolutionsIndexer.Data.SolutionFolderNs;
+namespace SunamoSolutionsIndexer.Data.SolutionFolderNs;
 
 /// <summary>
 /// Solution folder with file information.

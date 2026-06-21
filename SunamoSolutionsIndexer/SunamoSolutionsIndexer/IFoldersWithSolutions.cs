@@ -1,4 +1,4 @@
-namespace SunamoDevCode.SunamoSolutionsIndexer;
+namespace SunamoSolutionsIndexer;
 
 /// <summary>
 /// Interface for managing folders containing Visual Studio solutions

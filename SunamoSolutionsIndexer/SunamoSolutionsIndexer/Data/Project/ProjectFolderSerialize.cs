@@ -1,4 +1,4 @@
-namespace SunamoDevCode.SunamoSolutionsIndexer.Data.Project;
+namespace SunamoSolutionsIndexer.Data.Project;
 
 /// <summary>
 /// Represents a project folder for serialization.

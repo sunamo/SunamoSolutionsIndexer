@@ -1,4 +1,4 @@
-namespace SunamoDevCode.SunamoSolutionsIndexer.Interfaces;
+namespace SunamoSolutionsIndexer.Interfaces;
 
 /// <summary>
 /// Interface for serializable solution folder data

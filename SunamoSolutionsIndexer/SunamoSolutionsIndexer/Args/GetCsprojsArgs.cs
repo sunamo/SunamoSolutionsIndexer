@@ -1,4 +1,4 @@
-namespace SunamoDevCode.SunamoSolutionsIndexer.Args;
+namespace SunamoSolutionsIndexer.Args;
 
 /// <summary>
 /// Arguments for getting csproj files.

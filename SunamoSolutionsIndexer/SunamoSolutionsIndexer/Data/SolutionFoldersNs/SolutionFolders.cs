@@ -1,4 +1,4 @@
-namespace SunamoDevCode.SunamoSolutionsIndexer.Data.SolutionFoldersNs;
+namespace SunamoSolutionsIndexer.Data.SolutionFoldersNs;
 
 /// <summary>
 /// Collection of solution folders with indexing support.

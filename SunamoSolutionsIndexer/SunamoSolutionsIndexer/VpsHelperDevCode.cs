@@ -1,4 +1,4 @@
-namespace SunamoDevCode.SunamoSolutionsIndexer;
+namespace SunamoSolutionsIndexer;
 
 /// <summary>
 /// Helper class for VPS-related operations with DevCode solutions.

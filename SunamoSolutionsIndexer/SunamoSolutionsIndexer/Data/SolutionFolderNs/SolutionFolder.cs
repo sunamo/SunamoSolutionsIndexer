@@ -1,4 +1,4 @@
-namespace SunamoDevCode.SunamoSolutionsIndexer.Data.SolutionFolderNs;
+namespace SunamoSolutionsIndexer.Data.SolutionFolderNs;
 
 /// <summary>
 /// Represents a solution folder with projects and modules.

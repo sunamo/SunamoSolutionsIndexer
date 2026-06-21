@@ -1,4 +1,4 @@
-namespace SunamoDevCode.SunamoSolutionsIndexer.Enums;
+namespace SunamoSolutionsIndexer.Enums;
 
 /// <summary>
 /// Defines the types of projects based on their platform, technology, or organizational category.

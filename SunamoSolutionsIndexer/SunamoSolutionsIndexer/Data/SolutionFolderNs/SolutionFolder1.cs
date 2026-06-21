@@ -1,4 +1,4 @@
-namespace SunamoDevCode.SunamoSolutionsIndexer.Data.SolutionFolderNs;
+namespace SunamoSolutionsIndexer.Data.SolutionFolderNs;
 
 /// <summary>
 /// Partial class containing additional methods for SolutionFolder.

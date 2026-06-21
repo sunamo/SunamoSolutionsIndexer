@@ -77,13 +77,13 @@ global using SunamoDevCode._public.SunamoTextOutputGenerator;
 global using SunamoDevCode.Enums;
 global using SunamoDevCode;
 // SunamoSolutionsIndexer own namespaces
-global using SunamoDevCode.SunamoSolutionsIndexer;
-global using SunamoDevCode.SunamoSolutionsIndexer.Args;
-global using SunamoDevCode.SunamoSolutionsIndexer.Data.SolutionFolderNs;
-global using SunamoDevCode.SunamoSolutionsIndexer.Data.SolutionFoldersNs;
-global using SunamoDevCode.SunamoSolutionsIndexer.Data.Project;
-global using SunamoDevCode.SunamoSolutionsIndexer.Enums;
-global using SunamoDevCode.SunamoSolutionsIndexer.Interfaces;
+global using SunamoSolutionsIndexer;
+global using SunamoSolutionsIndexer.Args;
+global using SunamoSolutionsIndexer.Data.SolutionFolderNs;
+global using SunamoSolutionsIndexer.Data.SolutionFoldersNs;
+global using SunamoSolutionsIndexer.Data.Project;
+global using SunamoSolutionsIndexer.Enums;
+global using SunamoSolutionsIndexer.Interfaces;
 
 global using SunamoDevCode.Values;
 
