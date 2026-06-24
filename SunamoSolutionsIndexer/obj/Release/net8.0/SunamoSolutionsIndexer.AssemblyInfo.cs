@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCopyrightAttribute("www.sunamo.cz")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Solutions and projects indexer extracted from SunamoDevCode.")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("26.6.21.5")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("26.6.21.5+d612aa647f8d86b6217ab252627ed01583fdc365")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("26.6.21.5+5c0186f6258679d54d7fe01ad600d9982747186f")]
 [assembly: System.Reflection.AssemblyProductAttribute("SunamoSolutionsIndexer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SunamoSolutionsIndexer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("26.6.21.5")]

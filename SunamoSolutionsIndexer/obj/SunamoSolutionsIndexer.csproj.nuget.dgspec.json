@@ -56,6 +56,9 @@
           }
         },
         "warningProperties": {
+          "noWarn": [
+            "NU1701"
+          ],
           "warnAsError": [
             "NU1605"
           ]
@@ -433,20 +436,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.28, 8.0.28]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.28, 8.0.28]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.28, 8.0.28]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -1237,7 +1226,7 @@
       "version": "26.6.21.5",
       "restore": {
         "projectUniqueName": "E:\\vs\\Projects\\PlatformIndependentNuGetPackages\\SunamoSolutionsIndexer\\SunamoSolutionsIndexer\\SunamoSolutionsIndexer.csproj",
-        "projectName": "SunamoSolutionsIndexer",
+        "projectName": "SunamoSlnIndexer",
         "projectPath": "E:\\vs\\Projects\\PlatformIndependentNuGetPackages\\SunamoSolutionsIndexer\\SunamoSolutionsIndexer\\SunamoSolutionsIndexer.csproj",
         "packagesPath": "C:\\Users\\aktiv\\.nuget\\packages\\",
         "outputPath": "E:\\vs\\Projects\\PlatformIndependentNuGetPackages\\SunamoSolutionsIndexer\\SunamoSolutionsIndexer\\obj\\",
@@ -1301,6 +1290,9 @@
           }
         },
         "warningProperties": {
+          "noWarn": [
+            "NU1701"
+          ],
           "warnAsError": [
             "NU1605"
           ]
@@ -1646,20 +1638,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.28, 8.0.28]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.28, 8.0.28]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.28, 8.0.28]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
