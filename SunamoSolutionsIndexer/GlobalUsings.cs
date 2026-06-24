@@ -76,14 +76,7 @@ global using SunamoDevCode._public.SunamoTextOutputGenerator;
 // Enums and root from SunamoDevCodeBase reference
 global using SunamoDevCode.Enums;
 global using SunamoDevCode;
-// SunamoSolutionsIndexer own namespaces
 global using SunamoSolutionsIndexer;
-global using SunamoSolutionsIndexer.Args;
-global using SunamoSolutionsIndexer.Data.SolutionFolderNs;
-global using SunamoSolutionsIndexer.Data.SolutionFoldersNs;
-global using SunamoSolutionsIndexer.Data.Project;
-global using SunamoSolutionsIndexer.Enums;
-global using SunamoSolutionsIndexer.Interfaces;
 
 global using SunamoDevCode.Values;
 

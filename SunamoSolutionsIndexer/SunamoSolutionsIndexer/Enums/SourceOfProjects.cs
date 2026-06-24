@@ -1,18 +1,12 @@
-namespace SunamoSolutionsIndexer.Enums;
+namespace SunamoSolutionsIndexer;
 
-/// <summary>
-/// SolutionFolder.GetCsprojs. SolutionsIndexerHelper.ProjectsInSolution
-/// </summary>
+// SolutionFolder.GetCsprojs. SolutionsIndexerHelper.ProjectsInSolution
 public enum SourceOfProjects
 {
-    /// <summary>
-    /// AllProjectsSearchHelper
-    /// Return csproj full paths in subfolders of A1 (one depth)
-    /// </summary>
+    // AllProjectsSearchHelper
+    // Return csproj full paths in subfolders of A1 (one depth)
     GetCsprojs,
-    /// <summary>
-    /// SolutionsIndexerHelper
-    /// Find as subfolders (is not guarantee in subfolder will be .csproj). Can remove VS folders and return only names
-    /// </summary>
+    // SolutionsIndexerHelper
+    // Find as subfolders (is not guarantee in subfolder will be .csproj). Can remove VS folders and return only names
     ProjectsInSolution
 }

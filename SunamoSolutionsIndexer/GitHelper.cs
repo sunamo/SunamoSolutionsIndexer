@@ -1,62 +1,38 @@
-namespace SunamoDevCode;
+namespace SunamoSolutionsIndexer;
 
-/// <summary>
-///     Must be in Win because use powershell
-///     In shared cannot because win derife from shared.
-///     If I have abstract layer for shared, then yes
-/// </summary>
 public class GitHelper
 {
     //https://radekjancik.visualstudio.com/AllProjectsSearch.Cmd.Parallel/_git/AllProjectsSearch.Cmd.Parallel
 
-    /// <summary>
-    /// Base URL for Visual Studio git repository pattern 1
-    /// https://radekjancik.visualstudio.com/_git/AllProjectsSearch
-    /// </summary>
+    // Base URL for Visual Studio git repository pattern 1
+    // https://radekjancik.visualstudio.com/_git/AllProjectsSearch
     private const string BaseUrlVisualStudioGit =
         "https://radekjancik.visualstudio.com/_git/";
 
-    /// <summary>
-    /// Base URL prefix for Visual Studio git repository pattern 2
-    /// https://radekjancik@dev.azure.com/radekjancik/CodeProjects_Bobril/_git/CodeProjects_Bobril
-    /// </summary>
+    // Base URL prefix for Visual Studio git repository pattern 2
+    // https://radekjancik@dev.azure.com/radekjancik/CodeProjects_Bobril/_git/CodeProjects_Bobril
     private const string BaseUrlVisualStudioPrefix =
         "https://radekjancik.visualstudio.com/";
 
-    /// <summary>
-    /// Git path suffix for pattern 2
-    /// </summary>
+    // Git path suffix for pattern 2
     private const string GitPathSuffix = "/_git/";
 
-    /// <summary>
-    /// Base URL prefix for Visual Studio repository pattern 3
-    /// https://radekjancik.visualstudio.com/AllProjectsSearch.ToNet5/_git/AllProjectsSearch.ToNet5
-    /// </summary>
+    // Base URL prefix for Visual Studio repository pattern 3
+    // https://radekjancik.visualstudio.com/AllProjectsSearch.ToNet5/_git/AllProjectsSearch.ToNet5
     private const string BaseUrlVisualStudioShort = "https://radekjancik.visualstudio.com/";
 
-    /// <summary>
-    /// Base URL for GitHub repositories
-    /// https://github.com/sunamo/sunamo.git
-    /// </summary>
+    // Base URL for GitHub repositories
+    // https://github.com/sunamo/sunamo.git
     private const string BaseUrlGitHub = "https://github.com/sunamo/";
 
-    /// <summary>
-    /// Base URL for Azure DevOps git repositories
-    /// https://dev.azure.com/radekjancik/_git/sunamo.webWithoutDep
-    /// </summary>
+    // Base URL for Azure DevOps git repositories
+    // https://dev.azure.com/radekjancik/_git/sunamo.webWithoutDep
     private const string BaseUrlAzureDevOps = "https://dev.azure.com/radekjancik/_git/";
 
-    /// <summary>
-    /// Base URL for Bitbucket repositories
-    /// https://bitbucket.org/sunamo/1gp-gopay-master
-    /// </summary>
+    // Base URL for Bitbucket repositories
+    // https://bitbucket.org/sunamo/1gp-gopay-master
     private const string BaseUrlBitbucket = @"https://bitbucket.org/sunamo/";
 
-    /// <summary>
-    /// Generates a PowerShell/Git bash script to pull updates from all specified folders.
-    /// </summary>
-    /// <param name="folders">List of repository folder paths to pull from.</param>
-    /// <returns>Generated bash script content for pulling all repositories.</returns>
     public static string PowershellForPull(List<string> folders)
     {
         var gitBashBuilder = new GitBashBuilder(new TextBuilderDC());
@@ -70,24 +46,8 @@ public class GitHelper
         return pullAllResult;
     }
 
-    /// <summary>
-    /// Pushes changes for a solution to the remote repository, including status check and commit.
-    /// </summary>
-    /// <param name="release">Whether this is a release build push.</param>
-    /// <param name="gitBashBuilder">Git bash builder for generating git commands.</param>
-    /// <param name="pushArgs">Additional arguments for the push command.</param>
-    /// <param name="commitMessage">Commit message to use.</param>
-    /// <param name="fullPathFolder">Full path to the solution folder.</param>
-    /// <param name="pushSolutionsData">Data about the push operation status.</param>
-    /// <param name="gitStatus">Git bash builder for status commands.</param>
-    /// <param name="psInvoke">Function to invoke PowerShell commands and return their output.</param>
-    /// <returns>True if the push was successful.</returns>
     public static
-#if ASYNC
         async Task<bool>
-#else
-    bool
-#endif
         PushSolution(bool release, GitBashBuilder gitBashBuilder, string pushArgs, string commitMessage,
             string fullPathFolder, PushSolutionsData pushSolutionsData, GitBashBuilder gitStatus,
             Func<List<string>, Task<List<List<string>>>> psInvoke)
@@ -110,18 +70,16 @@ public class GitHelper
             // 2. or powershell
             if (release)
                 result =
-#if ASYNC
                     await
-#endif
                         psInvoke(gitStatus.Commands);
 
             var statusOutput = result[1];
             // If solution has changes
-            var hasChanges = statusOutput.Where(line => line.Contains("nothing to commit")).Count() == 0;
+            var hasChanges = !statusOutput.Any(line => line.Contains("nothing to commit"));
             if (!hasChanges)
                 foreach (var lineStatus in statusOutput)
                 {
-                    var statusLine = lineStatus.Trim();
+                    _ = lineStatus.Trim();
                     if (statusOutput.Contains("modified:"))
                         if (statusOutput.Contains(".gitignore"))
                         {
@@ -134,7 +92,7 @@ public class GitHelper
                 foreach (var lineStatus in statusOutput)
                 {
                     //
-                    var statusLine = lineStatus.Trim();
+                    _ = lineStatus.Trim();
                     if (statusOutput.Contains("but the upstream is gone"))
                     {
                         hasChanges = true;
@@ -144,8 +102,7 @@ public class GitHelper
 
             // or/and is a git repository
             var isGitRepository =
-                statusOutput.Where(line => line.Contains("not a git repository")).Count() ==
-                0; // CA.ReturnWhichContains(, ).Count == 0;
+                !statusOutput.Any(line => line.Contains("not a git repository")); // CA.ReturnWhichContains(, ).Count == 0;
             if (hasChanges && isGitRepository)
             {
                 gitBashBuilder.Cd(fullPathFolder);
@@ -175,11 +132,6 @@ public class GitHelper
         return false;
     }
 
-    /// <summary>
-    /// Extracts repository name from git origin URI
-    /// </summary>
-    /// <param name="originUri">Git origin URI to parse</param>
-    /// <returns>Repository name extracted from the URI</returns>
     public static string NameOfRepoFromOriginUri(string originUri)
     {
         originUri = HttpUtility.UrlDecode(originUri);

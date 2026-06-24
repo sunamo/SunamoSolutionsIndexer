@@ -1,74 +1,33 @@
-namespace SunamoDevCode;
+namespace SunamoSolutionsIndexer;
 
-/// <summary>
-/// Cache for XML documents (typically csproj files) to avoid repeated parsing.
-/// </summary>
 public class XmlDocumentsCache
 {
     private const string Nullable = "<Nullable>enable</Nullable>";
     private const string DebugTypeNone = "<DebugType>none</DebugType>";
-    /// <summary>
-    /// Type reference for this class.
-    /// </summary>
     public static Type Type = typeof(XmlDocumentsCache);
-    /// <summary>
-    /// Dictionary caching parsed XmlDocuments keyed by file path.
-    /// </summary>
     public static Dictionary<string, XmlDocument> Cache = new();
 
-    /// <summary>
-    ///     In key is csproj path
-    ///     In value is absolute path of references (recursive)
-    /// </summary>
+    // In key is csproj path
+    // In value is absolute path of references (recursive)
     public static Dictionary<string, List<string>> ProjectDeps = new();
 
-    /// <summary>
-    /// Delegate for building the project dependency tree from a csproj path and cache.
-    /// </summary>
     public static Func<string, Dictionary<string, XmlDocument>?,
-#if ASYNC
             Task<List<string>>
-#else
-List<string>
-#endif
         >
         BuildProjectsDependencyTreeList = null!;
 
-    /// <summary>
-    /// Count of csproj files that were null (ignored or failed to load).
-    /// </summary>
     public static int Nulled;
-    /// <summary>
-    /// Optional progress bar for displaying cache loading progress.
-    /// </summary>
     public static IProgressBarDC? Clpb = null;
-    /// <summary>
-    /// List of paths that cannot be loaded with a dictionary to avoid collection-was-changed exceptions.
-    /// </summary>
     public static List<string> CantBeLoadWithDictToAvoidCollectionWasChangedButCanWithNull = new();
 
-    /// <summary>
-    ///     Nemůže se volat společně s .Result! viz. https://stackoverflow.com/a/65820543/9327173 Způsobí to deadlock! Musím to
-    ///     dělat přes ThisApp.async_
-    ///     Can return null during many situations
-    ///     For example when ignored => must always checking for null
-    /// </summary>
-    /// <param name="path">Path to the csproj file to load or retrieve from cache.</param>
-    /// <returns>Result containing the parsed XmlDocument or an exception message.</returns>
-
+    // Nemůže se volat společně s .Result! viz. https://stackoverflow.com/a/65820543/9327173 Způsobí to deadlock! Musím to
+    // dělat přes ThisApp.async_
+    // Can return null during many situations
+    // For example when ignored => must always checking for null
     public static
-#if ASYNC
         async Task<ResultWithExceptionDC<XmlDocument>>
-#else
-ResultWithException<XmlDocument>
-#endif
         Get(string path)
     {
-#if DEBUG
-        if (path.EndsWith("duom.web.csproj"))
-        {
-        }
-#endif
         // Tady to mít je píčovina. To se nemůže nikdy s malým vyskytnout
         //path = SH.FirstCharUpper(path);
         if (Cache.ContainsKey(path)) return new ResultWithExceptionDC<XmlDocument>(Cache[path]);
@@ -92,11 +51,9 @@ ResultWithException<XmlDocument>
         //if (ThisApp.async_)
         //{
         xml =
-#if ASYNC
             // Tohle nechápu. FubuCsProjFile i SunamoExceptions jsou net7.0.
             // co to je za dementní chybu This call site is reachable on all platforms. 'File.ReadAllTextAsyncAsync(string)' is only supported on: 'Windows' 7.0 and later.
             await
-#endif
                 FileAsync.ReadAllTextAsync(path);
         //}
         //else
@@ -153,9 +110,7 @@ ResultWithException<XmlDocument>
         if (BuildProjectsDependencyTreeList != null)
         {
             var list =
-#if ASYNC
                 await
-#endif
                     BuildProjectsDependencyTreeList(path, null);
             ProjectDeps.Add(path, list);
         }
@@ -178,10 +133,6 @@ ResultWithException<XmlDocument>
         }
     }
 
-    /// <summary>
-    /// Builds a filtered dictionary containing only successfully loaded XML documents from the cache.
-    /// </summary>
-    /// <returns>Dictionary of valid XML documents keyed by csproj path.</returns>
     public static Dictionary<string, XmlDocument> BuildProjectDeps()
     {
         var xd = new Dictionary<string, XmlDocument>();
@@ -194,10 +145,6 @@ ResultWithException<XmlDocument>
         return xd;
     }
 
-    /// <summary>
-    /// Returns paths of projects with invalid XML.
-    /// </summary>
-    /// <returns>List of project paths with null XmlDocument values.</returns>
     public static List<string> BadXml()
     {
         var withNull = Cache.Where(entry => entry.Value == null);
@@ -206,49 +153,25 @@ ResultWithException<XmlDocument>
         return badXmlPaths;
     }
 
-    /// <summary>
-    /// Sets or updates a cached XML document from raw XML content, optionally saving to disk.
-    /// </summary>
-    /// <param name="path">Path to the csproj file.</param>
-    /// <param name="xmlContent">Raw XML content to parse.</param>
-    /// <param name="saveToFile">Whether to also write the document to disk.</param>
     public static
-#if ASYNC
         async Task
-#else
-void
-#endif
         Set(string path, string xmlContent, bool saveToFile = false)
     {
         var xd = new XmlDocument();
         xd.PreserveWhitespace = true;
         xd.LoadXml(xmlContent);
-#if ASYNC
         await
-#endif
             Set(path, xd, saveToFile);
     }
 
-    /// <summary>
-    /// Sets or updates a cached XML document, optionally saving to disk.
-    /// </summary>
-    /// <param name="path">Path to the csproj file.</param>
-    /// <param name="document">XmlDocument to cache.</param>
-    /// <param name="saveToFile">Whether to also write the document to disk.</param>
     public static
-#if ASYNC
         async Task
-#else
-void
-#endif
         Set(string path, XmlDocument document, bool saveToFile = false)
     {
         if (saveToFile)
         {
             document.PreserveWhitespace = true;
-#if ASYNC
             await
-#endif
                 FileAsync.WriteAllTextAsync(path, document.OuterXml);
         }
 

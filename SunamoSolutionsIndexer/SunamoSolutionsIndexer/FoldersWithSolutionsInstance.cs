@@ -1,5 +1,5 @@
 // variables names: ok
-//namespace SunamoDevCode.SunamoSolutionsIndexer;
+//namespace SunamoSolutionsIndexer;
 //using Microsoft.Extensions.Logging;
 
 //public class FoldersWithSolutions : IFoldersWithSolutions
@@ -126,7 +126,6 @@
 //    public Dictionary<string, List<string>> allCsprojGlobal = new Dictionary<string, List<string>>();
 
 //    public
-//#if ASYNC
 //    async Task<Dictionary<string, List<string>>>
 //#else
 //    Dictionary<string, List<string>>
@@ -145,7 +144,6 @@
 //                        ResultWithExceptionDC<XmlDocument> xml = null;
 
 //                        xml =
-//#if ASYNC
 //                        await
 //#endif
 //                        XmlDocumentsCache.Get(item2);
@@ -591,7 +589,6 @@
 //            {
 //                if (returnOnlyThese != null)
 //                {
-//#if DEBUG
 //                    if (sln.NameSolution.Contains("OnlyWeb"))
 //                    {
 

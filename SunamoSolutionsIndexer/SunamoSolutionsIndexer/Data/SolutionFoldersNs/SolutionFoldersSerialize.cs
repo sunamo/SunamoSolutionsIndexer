@@ -1,20 +1,11 @@
-namespace SunamoSolutionsIndexer.Data.SolutionFoldersNs;
+namespace SunamoSolutionsIndexer;
 
-/// <summary>
-/// Serializable collection of solution folders
-/// </summary>
 public class SolutionFoldersSerialize
 {
-    /// <summary>
-    /// List of serializable solution folders.
-    /// </summary>
+    // List of serializable solution folders.
     public List<SolutionFolderSerialize> SolutionFolders = new List<SolutionFolderSerialize>();
 
-    /// <summary>
-    /// Inserts a solution folder at specified index, maintaining max 10 items
-    /// </summary>
-    /// <param name="index">Index to insert at</param>
-    /// <param name="solutionFolder">Solution folder to insert</param>
+    // Inserts a solution folder at specified index, maintaining max 10 items
     public void Insert(int index, SolutionFolderSerialize solutionFolder)
     {
         if (solutionFolder == null)
@@ -41,39 +32,24 @@ public class SolutionFoldersSerialize
         Update();
     }
 
-    /// <summary>
-    /// Event raised when the solution folders collection is updated.
-    /// </summary>
     public event Action<List<SolutionFolderSerialize>>? Updated;
 
-    /// <summary>
-    /// Removes all solution folders with specified displayed text
-    /// </summary>
-    /// <param name="displayedText">Displayed text to match</param>
     public void RemoveWithDisplayedText(string displayedText)
     {
         SolutionFolders.RemoveAll(folder => folder.DisplayedText == displayedText);
     }
 
-    /// <summary>
-    /// Raises the Updated event with the current solution folders.
-    /// </summary>
     public void Update()
     {
         Updated?.Invoke(SolutionFolders);
     }
 
-    /// <summary>
-    /// Gets solution folders by name with optional error handling
-    /// If isMissingAllowed is false and solution can't be found, saves exception in result
-    /// Otherwise saves null in result Data
-    /// </summary>
-    /// <param name="solutionNamesToFind">Solution names to find</param>
-    /// <param name="isMissingAllowed">If false, throws exception when solution not found</param>
-    /// <returns>Result with found solution folders or exception</returns>
+    // Gets solution folders by name with optional error handling
+    // If isMissingAllowed is false and solution can't be found, saves exception in result
+    // Otherwise saves null in result Data
     public ResultWithExceptionDC<SolutionFoldersSerialize> GetWithName(List<string> solutionNamesToFind, bool isMissingAllowed)
     {
-        ResultWithExceptionDC<SolutionFoldersSerialize> result = new ResultWithExceptionDC<SolutionFoldersSerialize>();
+        var result = new ResultWithExceptionDC<SolutionFoldersSerialize>();
         result.Data = new SolutionFoldersSerialize();
 
         foreach (var solutionName in solutionNamesToFind)
@@ -103,10 +79,6 @@ public class SolutionFoldersSerialize
         return result;
     }
 
-    /// <summary>
-    /// Removes solution folders with specified names
-    /// </summary>
-    /// <param name="solutionNamesToRemove">Solution names to remove</param>
     public void RemoveWithName(List<string> solutionNamesToRemove)
     {
         int index = -1;

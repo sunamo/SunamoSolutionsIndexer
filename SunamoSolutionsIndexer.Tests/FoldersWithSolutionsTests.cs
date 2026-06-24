@@ -2,7 +2,7 @@
 namespace SunamoDevCode.Tests;
 
 using Microsoft.Extensions.Logging;
-using SunamoDevCode.SunamoSolutionsIndexer;
+using SunamoSolutionsIndexer;
 using SunamoPaths;
 using SunamoTest;
 

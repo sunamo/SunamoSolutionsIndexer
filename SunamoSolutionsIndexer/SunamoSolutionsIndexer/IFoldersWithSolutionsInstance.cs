@@ -1,5 +1,5 @@
 // variables names: ok
-//namespace SunamoDevCode.SunamoSolutionsIndexer;
+//namespace SunamoSolutionsIndexer;
 
 //public interface IFoldersWithSolutions
 //{

@@ -4,33 +4,13 @@ namespace SunamoSolutionsIndexer;
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 public partial class FoldersWithSolutions
 {
-    /// <summary>
-    /// toSelling can be null
-    /// </summary>
-    /// <param name="logger">Logger instance.</param>
-    /// <param name="documentsFolder">Documents folder path.</param>
-    /// <param name="solutionFolder">Solution folder path.</param>
-    /// <param name="toSelling">Selling configuration (can be null).</param>
-    /// <param name="projName">Project name (optional).</param>
-    /// <returns>Created SolutionFolder.</returns>
+    // toSelling can be null
     public static SolutionFolder CreateSolutionFolder(ILogger logger, string documentsFolder, string solutionFolder, PpkOnDriveDC toSelling, string? projName = null)
     {
         return CreateSolutionFolder(logger, documentsFolder, null!, solutionFolder, toSelling, projName);
     }
 
-    /// <summary>
-    /// toSelling can be null
-    /// </summary>
-    /// <summary>
-    /// Creates a SolutionFolder from a SolutionFolderSerialize and path
-    /// </summary>
-    /// <param name="logger">Logger instance</param>
-    /// <param name="documentsFolder">Documents folder path</param>
-    /// <param name="solutionFolderData">Serialized solution folder data (can be null)</param>
-    /// <param name="solutionFolder">Solution folder path</param>
-    /// <param name="toSelling">Selling configuration (can be null)</param>
-    /// <param name="projName">Project name (optional)</param>
-    /// <returns>Created SolutionFolder</returns>
+    // toSelling can be null
     public static SolutionFolder CreateSolutionFolder(ILogger logger, string documentsFolder, SolutionFolderSerialize solutionFolderData, string solutionFolder, PpkOnDriveDC toSelling, string? projName = null)
     {
         if (projName == null)
@@ -83,20 +63,12 @@ public partial class FoldersWithSolutions
         return RepositoryLocal.All;
     }
 
-    /// <summary>
-    /// Get name based on relative but always fully recognized project
-    /// </summary>
-    /// <param name = "item"></param>
+    // Get name based on relative but always fully recognized project
     private static string GetDisplayedName(string item)
     {
         return SolutionsIndexerHelper.GetDisplayedSolutionName(item);
     }
 
-    /// <summary>
-    /// Returns UAP (Universal App Platform) solutions from the VS17 repository.
-    /// </summary>
-    /// <param name="skipThese">Solution names to skip (optional).</param>
-    /// <returns>List of UAP solution folders.</returns>
     public List<SolutionFolder> SolutionsUap(IList<string>? skipThese = null)
     {
         var slns = GetSolutions(RepositoryLocal.Vs17, false, skipThese);
@@ -104,12 +76,6 @@ public partial class FoldersWithSolutions
         return uap;
     }
 
-    /// <summary>
-    /// Gets solutions matching a wildcard pattern
-    /// </summary>
-    /// <param name="repository">Repository to search in</param>
-    /// <param name="wildcardPattern">Wildcard pattern (can be plain text)</param>
-    /// <returns>List of matching solutions</returns>
     public IList<SolutionFolder> SolutionsWildcard(RepositoryLocal repository, string wildcardPattern)
     {
         var result = GetSolutions(repository);
@@ -125,15 +91,9 @@ public partial class FoldersWithSolutions
         return result;
     }
 
-    /// <summary>
-    /// Gets solutions from repository with optional filtering
-    /// Excludes from SolutionsIndexerConsts.SolutionsExcludeWhileWorkingOnSourceCode if Debugger is attached and !loadAll
-    /// skipThese can use wildcard patterns
-    /// </summary>
-    /// <param name="repository">Repository to get solutions from</param>
-    /// <param name="isLoadingAll">If false and debugger attached, excludes working solutions</param>
-    /// <param name="skipThese">Solution names to skip (supports wildcards)</param>
-    /// <returns>Filtered list of solutions</returns>
+    // Gets solutions from repository with optional filtering
+    // Excludes from SolutionsIndexerConsts.SolutionsExcludeWhileWorkingOnSourceCode if Debugger is attached and !loadAll
+    // skipThese can use wildcard patterns
     public List<SolutionFolder> GetSolutions(RepositoryLocal repository, bool isLoadingAll = true, IList<string>? skipThese = null)
     {
         var result = new List<SolutionFolder>(Solutions);
@@ -183,11 +143,6 @@ public partial class FoldersWithSolutions
         return result;
     }
 
-    /// <summary>
-    /// Returns full paths for all project folders recursively - specific and ordinary
-    /// </summary>
-    /// <param name="additionalFolders">Additional folders to include</param>
-    /// <returns>List of project folder paths</returns>
     private List<string> ReturnAllProjectFolders(params string[] additionalFolders)
     {
         List<string> projects = new List<string>();
@@ -257,11 +212,6 @@ public partial class FoldersWithSolutions
         return projects;
     }
 
-    /// <summary>
-    /// Separates folders into normal and special (starting with _)
-    /// </summary>
-    /// <param name="folder">Folder path to analyze</param>
-    /// <returns>Tuple of (normal folders, special folders)</returns>
     public static Tuple<List<string>, List<string>> ReturnNormalAndSpecialFolders(string folder)
     {
         List<string>? specialFolders = null;
@@ -270,12 +220,6 @@ public partial class FoldersWithSolutions
         return new Tuple<List<string>, List<string>>(normalFolders, specialFolders);
     }
 
-    /// <summary>
-    /// Separates subfolders into those starting with _ (special) and others (normal)
-    /// </summary>
-    /// <param name="folder">Folder path to analyze</param>
-    /// <param name="specialFolders">Output: folders starting with _</param>
-    /// <param name="normalFolders">Output: other folders</param>
     public static void ReturnNormalAndSpecialFolders(string folder, out List<string> specialFolders, out List<string> normalFolders)
     {
         specialFolders = new List<string>();

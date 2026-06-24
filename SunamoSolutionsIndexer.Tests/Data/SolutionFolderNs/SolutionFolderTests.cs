@@ -3,7 +3,7 @@ namespace SunamoDevCode.Tests.Data.SolutionFolderNs;
 
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
-using SunamoDevCode.SunamoSolutionsIndexer;
+using SunamoSolutionsIndexer;
 
 /// <summary>
 /// Tests for SolutionFolder functionality including exe to release conversion.
