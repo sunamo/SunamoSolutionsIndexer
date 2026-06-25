@@ -1,4 +1,4 @@
-namespace SunamoSolutionsIndexer;
+namespace SunamoSolutionsIndexer.Data.Project;
 
 // TODO: Merge with SolutionInListBox
 public class ProjectFolderSerialize

@@ -1,4 +1,4 @@
-namespace SunamoSolutionsIndexer;
+namespace SunamoSolutionsIndexer.Data.Project;
 
 public class ProjectFoldersSerialize
 {

@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="RunnerSolutionsIndexer\\RunnerSolutionsIndexer.csproj" />
+  <Project Path="RunnerSunamoSolutionsIndexer\\RunnerSunamoSolutionsIndexer.csproj" />
+  <Project Path="SunamoSolutionsIndexer\\SunamoSolutionsIndexer.csproj" />
+  <Project Path="SunamoSolutionsIndexer.Tests\\SunamoSolutionsIndexer.Tests.csproj" />
+</Solution>

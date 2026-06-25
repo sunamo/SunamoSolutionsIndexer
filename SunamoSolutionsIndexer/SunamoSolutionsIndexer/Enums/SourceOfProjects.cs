@@ -1,4 +1,4 @@
-namespace SunamoSolutionsIndexer;
+namespace SunamoSolutionsIndexer.Enums;
 
 // SolutionFolder.GetCsprojs. SolutionsIndexerHelper.ProjectsInSolution
 public enum SourceOfProjects

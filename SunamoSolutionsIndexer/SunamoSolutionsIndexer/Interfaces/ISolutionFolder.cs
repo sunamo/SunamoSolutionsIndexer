@@ -1,4 +1,4 @@
-namespace SunamoSolutionsIndexer;
+namespace SunamoSolutionsIndexer.Interfaces;
 
 public interface ISolutionFolder
 {

@@ -4,9 +4,9 @@
     <LangVersion>latest</LangVersion>
     <Platforms>AnyCPU;x86</Platforms>
     <PackageId>SunamoSlnIndexer</PackageId>
-    <Version>26.6.21.5</Version>
+    <Version>26.6.25.2</Version>
     <Description>Solutions and projects indexer extracted from SunamoDevCode.</Description>
-    <PackageReleaseNotes>y</PackageReleaseNotes>
+    <PackageReleaseNotes>feat: fix #if</PackageReleaseNotes>
     <Authors>www.sunamo.cz</Authors>
     <Copyright>www.sunamo.cz</Copyright>
     <PackageProjectUrl>https://sunamo.github.io/PlatformIndependentNuGetPackages/SunamoSolutionsIndexer/</PackageProjectUrl>

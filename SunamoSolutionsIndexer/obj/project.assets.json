@@ -274,7 +274,7 @@
           }
         }
       },
-      "SunamoDevCodeBase/26.6.21.1": {
+      "SunamoDevCodeBase/26.6.25.4": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -418,7 +418,7 @@
           "buildTransitive/PolySharp.targets": {}
         }
       },
-      "SunamoDevCodeBase/26.6.21.1": {
+      "SunamoDevCodeBase/26.6.25.4": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
@@ -578,7 +578,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "SunamoDevCodeBase/26.6.21.1": {
+      "SunamoDevCodeBase/26.6.25.4": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
@@ -738,7 +738,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "SunamoDevCodeBase/26.6.21.1": {
+      "SunamoDevCodeBase/26.6.25.4": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -1506,7 +1506,7 @@
         "system.threading.tasks.extensions.nuspec"
       ]
     },
-    "SunamoDevCodeBase/26.6.21.1": {
+    "SunamoDevCodeBase/26.6.25.4": {
       "type": "project",
       "path": "../../SunamoDevCodeBase/SunamoDevCodeBase/SunamoDevCodeBase.csproj",
       "msbuildProject": "../../SunamoDevCodeBase/SunamoDevCodeBase/SunamoDevCodeBase.csproj"
@@ -1516,24 +1516,24 @@
     "net10.0": [
       "Microsoft.SourceLink.GitHub >= 10.0.102",
       "PolySharp >= 1.15.0",
-      "SunamoDevCodeBase >= 26.6.21.1"
+      "SunamoDevCodeBase >= 26.6.25.4"
     ],
     "net8.0": [
       "Microsoft.SourceLink.GitHub >= 10.0.102",
       "PolySharp >= 1.15.0",
-      "SunamoDevCodeBase >= 26.6.21.1"
+      "SunamoDevCodeBase >= 26.6.25.4"
     ],
     "net9.0": [
       "Microsoft.SourceLink.GitHub >= 10.0.102",
       "PolySharp >= 1.15.0",
-      "SunamoDevCodeBase >= 26.6.21.1"
+      "SunamoDevCodeBase >= 26.6.25.4"
     ],
     "netstandard2.0": [
       "Microsoft.CSharp >= 4.7.0",
       "Microsoft.SourceLink.GitHub >= 10.0.102",
       "NETStandard.Library >= 2.0.3",
       "PolySharp >= 1.15.0",
-      "SunamoDevCodeBase >= 26.6.21.1"
+      "SunamoDevCodeBase >= 26.6.25.4"
     ]
   },
   "packageFolders": {
@@ -1541,7 +1541,7 @@
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "26.6.21.5",
+    "version": "26.6.25.2",
     "restore": {
       "projectUniqueName": "E:\\vs\\Projects\\PlatformIndependentNuGetPackages\\SunamoSolutionsIndexer\\SunamoSolutionsIndexer\\SunamoSolutionsIndexer.csproj",
       "projectName": "SunamoSlnIndexer",
@@ -1566,6 +1566,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\aktiv\\AppData\\Local\\Temp\\claude\\local-nuget": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://pkgs.dev.azure.com/sunamocz/_packaging/nuget_feed/nuget/v3/index.json": {}
       },

@@ -21,7 +21,6 @@ global using Microsoft.Extensions.Logging;
 global using Microsoft.Extensions.Logging.Abstractions;
 global using ILogger = Microsoft.Extensions.Logging.ILogger;
 global using NullLogger = Microsoft.Extensions.Logging.Abstractions.NullLogger;
-// _sunamo namespaces from SunamoDevCodeBase reference
 global using SunamoDevCode._sunamo;
 global using SunamoDevCode._sunamo.SunamoArgs;
 global using SunamoDevCode._sunamo.SunamoBts;
@@ -64,7 +63,6 @@ global using SunamoDevCode._sunamo.SunamoValues.Constants;
 global using SunamoDevCode._sunamo.SunamoValues.Values;
 global using SunamoDevCode._sunamo.SunamoCSharpKeywords;
 global using SunamoDevCode._sunamo.SunamoXml;
-// _public namespaces from SunamoDevCodeBase reference
 global using SunamoDevCode._public;
 global using SunamoDevCode._public.SunamoCollectionsNonGeneric;
 global using SunamoDevCode._public.SunamoCollectionWithoutDuplicates;
@@ -73,11 +71,14 @@ global using SunamoDevCode._public.SunamoEnums.Enums;
 global using SunamoDevCode._public.SunamoGitBashBuilder;
 global using SunamoDevCode._public.SunamoInterfaces.Interfaces;
 global using SunamoDevCode._public.SunamoTextOutputGenerator;
-// Enums and root from SunamoDevCodeBase reference
 global using SunamoDevCode.Enums;
 global using SunamoDevCode;
 global using SunamoSolutionsIndexer;
-
 global using SunamoDevCode.Values;
-
 global using System.Web;
+global using SunamoSolutionsIndexer.Args;
+global using SunamoSolutionsIndexer.Enums;
+global using SunamoSolutionsIndexer.Interfaces;
+global using SunamoSolutionsIndexer.Data.Project;
+global using SunamoSolutionsIndexer.Data.SolutionFolderNs;
+global using SunamoSolutionsIndexer.Data.SolutionFoldersNs;
