@@ -109,7 +109,20 @@ public partial class FoldersWithSolutions
     }
 
     private static TwoWayDictionary<ProjectsTypes, string> projectTypes = new TwoWayDictionary<ProjectsTypes, string>();
+    private static readonly object projectTypesLock = new object();
+
+    /// <summary>
+    /// Thread-safe wrapper: fills the static project type map only once, even when called concurrently.
+    /// </summary>
     public static void PairProjectFolderWithEnum(ILogger logger, string documentsFolder)
+    {
+        lock (projectTypesLock)
+        {
+            PairProjectFolderWithEnumLocked(logger, documentsFolder);
+        }
+    }
+
+    private static void PairProjectFolderWithEnumLocked(ILogger logger, string documentsFolder)
     {
         if (projectTypes.FirstToSecond.Count > 0)
         {

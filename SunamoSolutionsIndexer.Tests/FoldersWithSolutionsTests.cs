@@ -63,7 +63,7 @@ public class FoldersWithSolutionsTests
         FoldersWithSolutions.PairProjectFolderWithEnum(TestLogger.Instance, basePath);
         FoldersWithSolutions instance = new FoldersWithSolutions(TestLogger.Instance, basePath, null!, false);
         instance.Reload(TestLogger.Instance, basePath, null!);
-        var solutions = instance.GetSolutions(Enums.RepositoryLocal.Vs17);
+        var solutions = instance.GetSolutions(SunamoSolutionsIndexer._sunamo.RepositoryLocal.Vs17);
         //instance.Reload()
     }
 
