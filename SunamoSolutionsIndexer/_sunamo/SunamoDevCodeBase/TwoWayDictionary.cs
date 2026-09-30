@@ -1,4 +1,4 @@
-namespace SunamoSolutionsIndexer._sunamo;
+namespace SunamoSolutionsIndexer._sunamo.SunamoDevCodeBase;
 
 /// <summary>
 /// Dictionary that can be searched by key and by value.

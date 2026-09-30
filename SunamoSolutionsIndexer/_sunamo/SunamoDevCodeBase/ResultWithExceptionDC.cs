@@ -1,4 +1,4 @@
-namespace SunamoSolutionsIndexer._sunamo;
+namespace SunamoSolutionsIndexer._sunamo.SunamoDevCodeBase;
 
 /// <summary>
 /// Result of an operation with data or exception.

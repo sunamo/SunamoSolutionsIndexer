@@ -1,4 +1,4 @@
-namespace SunamoSolutionsIndexer._sunamo;
+namespace SunamoSolutionsIndexer._sunamo.SunamoDevCodeBase;
 
 // Checking whether string is already contained.
 /// <summary>
