@@ -1,4 +1,4 @@
-namespace SunamoSolutionsIndexer._sunamo;
+namespace SunamoSolutionsIndexer._sunamo.SunamoDevCodeBase;
 
 // Represents a wildcard running on the System.Text.RegularExpressions engine.
 /// <summary>

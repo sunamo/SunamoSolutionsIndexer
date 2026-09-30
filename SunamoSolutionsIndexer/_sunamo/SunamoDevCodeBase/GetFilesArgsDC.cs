@@ -1,4 +1,4 @@
-namespace SunamoSolutionsIndexer._sunamo;
+namespace SunamoSolutionsIndexer._sunamo.SunamoDevCodeBase;
 
 // TODO: Should this inherit from GetFoldersEveryFolderArgs? In vs2 it does
 /// <summary>

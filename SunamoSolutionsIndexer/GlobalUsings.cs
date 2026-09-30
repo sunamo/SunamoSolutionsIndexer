@@ -30,3 +30,4 @@ global using SunamoSolutionsIndexer.Data.Project;
 global using SunamoSolutionsIndexer.Data.SolutionFolderNs;
 global using SunamoSolutionsIndexer.Data.SolutionFoldersNs;
 global using SunamoSolutionsIndexer._sunamo;
+global using SunamoSolutionsIndexer._sunamo.SunamoDevCodeBase;
