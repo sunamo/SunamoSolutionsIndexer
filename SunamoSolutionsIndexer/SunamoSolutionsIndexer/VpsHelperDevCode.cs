@@ -18,7 +18,7 @@ public class VpsHelperDevCode
     {
         bool release = true;
         string pushArgs = string.Empty;
-        string commitMessage = Translate.FromKey(XlfKeys.BeforePublishingToVPS) + " " + DateTime.Today.ToShortDateString();
+        string commitMessage = "Before publishing to VPS" + " " + DateTime.Today.ToShortDateString();
 
         var gitBashBuilder = new GitBashBuilder(new TextBuilderDC());
         var gitStatus = new GitBashBuilder(new TextBuilderDC());
