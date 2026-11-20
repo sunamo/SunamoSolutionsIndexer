@@ -6,6 +6,9 @@ namespace SunamoSolutionsIndexer._sunamo.SunamoDevCodeBase;
 public partial class GitBashBuilder : IGitBashBuilder
 {
 
+    /// <summary>
+    /// Gets or sets the some errors occured.
+    /// </summary>
     public static string SomeErrorsOccured { get; set; } = "SomeErrorsOccured";
 
 #pragma warning restore

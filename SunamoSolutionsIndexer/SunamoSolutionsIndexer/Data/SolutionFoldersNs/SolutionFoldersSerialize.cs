@@ -1,11 +1,22 @@
 namespace SunamoSolutionsIndexer.Data.SolutionFoldersNs;
 
+/// <summary>
+/// Represents the solution folders serialize type.
+/// </summary>
 public class SolutionFoldersSerialize
 {
     // List of serializable solution folders.
+    /// <summary>
+    /// The solution folders.
+    /// </summary>
     public List<SolutionFolderSerialize> SolutionFolders = new List<SolutionFolderSerialize>();
 
     // Inserts a solution folder at specified index, maintaining max 10 items
+    /// <summary>
+    /// Insert.
+    /// </summary>
+    /// <typeparam name="SolutionFolderSerialize">The type SolutionFolderSerialize.</typeparam>
+    /// <returns>The insert result.</returns>
     public void Insert(int index, SolutionFolderSerialize solutionFolder)
     {
         if (solutionFolder == null)
@@ -32,13 +43,25 @@ public class SolutionFoldersSerialize
         Update();
     }
 
+    /// <summary>
+    /// The updated.
+    /// </summary>
     public event Action<List<SolutionFolderSerialize>>? Updated;
 
+    /// <summary>
+    /// Remove with displayed text.
+    /// </summary>
+    /// <param name="displayedText">The displayed text.</param>
+    /// <returns>The remove with displayed text result.</returns>
     public void RemoveWithDisplayedText(string displayedText)
     {
         SolutionFolders.RemoveAll(folder => folder.DisplayedText == displayedText);
     }
 
+    /// <summary>
+    /// Update.
+    /// </summary>
+    /// <param name="displayedText">The displayed text.</param>
     public void Update()
     {
         Updated?.Invoke(SolutionFolders);
@@ -47,6 +70,10 @@ public class SolutionFoldersSerialize
     // Gets solution folders by name with optional error handling
     // If isMissingAllowed is false and solution can't be found, saves exception in result
     // Otherwise saves null in result Data
+    /// <summary>
+    /// Initializes a new instance of the get with name class.
+    /// </summary>
+    /// <param name="SolutionFolders">The solution folders.</param>
     public ResultWithExceptionDC<SolutionFoldersSerialize> GetWithName(List<string> solutionNamesToFind, bool isMissingAllowed)
     {
         var result = new ResultWithExceptionDC<SolutionFoldersSerialize>();
@@ -79,6 +106,11 @@ public class SolutionFoldersSerialize
         return result;
     }
 
+    /// <summary>
+    /// Remove with name.
+    /// </summary>
+    /// <param name="solutionNamesToRemove">The solution names to remove.</param>
+    /// <returns>The remove with name result.</returns>
     public void RemoveWithName(List<string> solutionNamesToRemove)
     {
         int index = -1;

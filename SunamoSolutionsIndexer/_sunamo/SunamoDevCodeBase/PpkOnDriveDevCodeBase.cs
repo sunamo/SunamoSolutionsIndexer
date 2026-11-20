@@ -6,6 +6,9 @@ namespace SunamoSolutionsIndexer._sunamo.SunamoDevCodeBase;
 public abstract class PpkOnDriveDevCodeBase<T> : List<T>
 {
 
+    /// <summary>
+    /// The args.
+    /// </summary>
     protected PpkOnDriveDevCodeArgs args;
 
 
@@ -23,6 +26,9 @@ public abstract class PpkOnDriveDevCodeBase<T> : List<T>
         await Save();
     }
 
+    /// <summary>
+    /// Load.
+    /// </summary>
     public abstract
         Task
         Load();

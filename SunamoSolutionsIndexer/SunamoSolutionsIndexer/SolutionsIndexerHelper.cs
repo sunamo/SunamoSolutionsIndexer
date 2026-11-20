@@ -1,9 +1,17 @@
 namespace SunamoSolutionsIndexer;
 
+/// <summary>
+/// Represents the solutions indexer helper type.
+/// </summary>
 public class SolutionsIndexerHelper
 {
     // Finds a solution folder by name. Can also accept web names like apps.sunamo.cz.
     // When exact match fails, tries appending "-claude" suffix (for worktree repos).
+    /// <summary>
+    /// Solution with name.
+    /// </summary>
+    /// <param name="name">The name.</param>
+    /// <returns>The solution with name result.</returns>
     public static SolutionFolder? SolutionWithName(string name)
     {
         if (FoldersWithSolutions.Fwss.Count > 1)
@@ -61,11 +69,23 @@ public class SolutionsIndexerHelper
     }
 
     // not full path, only name of folder for more accurate deciding
+    /// <summary>
+    /// Is the solutions folder.
+    /// </summary>
+    /// <param name="nameOfFolder">The name of folder.</param>
+    /// <returns>The is the solutions folder result.</returns>
     public static bool IsTheSolutionsFolder(string nameOfFolder)
     {
         return nameOfFolder.Contains(SolutionsIndexerConsts.ProjectsFolderName) || nameOfFolder == SolutionsIndexerStrings.GitHub || nameOfFolder == SolutionsIndexerStrings.BitBucket;
     }
 
+    /// <summary>
+    /// Projects in solution.
+    /// </summary>
+    /// <param name="isRemovingVsFolders">The is removing vs folders.</param>
+    /// <param name="folderPath">The folder path.</param>
+    /// <param name="isReturningOnlyNames">The is returning only names.</param>
+    /// <returns>The projects in solution result.</returns>
     public static List<string> ProjectsInSolution(bool isRemovingVsFolders, string folderPath, bool isReturningOnlyNames = true)
     {
         // TODO: Filter auto created files, then uncomment
@@ -84,6 +104,11 @@ public class SolutionsIndexerHelper
         return directories;
     }
 
+    /// <summary>
+    /// Remove vs folders.
+    /// </summary>
+    /// <param name="isRemovingVsFolders">The is removing vs folders.</param>
+    /// <param name="directories">The directories.</param>
     public static void RemoveVsFolders(bool isRemovingVsFolders, List<string> directories)
     {
         if (isRemovingVsFolders)
@@ -94,6 +119,11 @@ public class SolutionsIndexerHelper
         }
     }
 
+    /// <summary>
+    /// Get displayed solution name.
+    /// </summary>
+    /// <param name="item">The item.</param>
+    /// <returns>The get displayed solution name result.</returns>
     public static string GetDisplayedSolutionName(string item)
     {
         List<string> tokens = new List<string>();
@@ -130,6 +160,15 @@ public class SolutionsIndexerHelper
         return string.Join("/", tokens.ToArray());
     }
 
+    /// <summary>
+    /// Modules in solution.
+    /// </summary>
+    /// <param name="logger">The logger.</param>
+    /// <param name="projects">The projects.</param>
+    /// <param name="fullPathFolder">The full path folder.</param>
+    /// <param name="isSelling">The is selling.</param>
+    /// <param name="toSelling">The to selling.</param>
+    /// <returns>The modules in solution result.</returns>
     public static List<string> ModulesInSolution(ILogger logger, List<string> projects, string fullPathFolder, bool isSelling, PpkOnDriveDC toSelling)
     {
         List<string> result = new List<string>();

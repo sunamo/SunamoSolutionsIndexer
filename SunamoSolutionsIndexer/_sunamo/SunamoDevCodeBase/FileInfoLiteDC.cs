@@ -5,12 +5,24 @@ namespace SunamoSolutionsIndexer._sunamo.SunamoDevCodeBase;
 /// </summary>
 public class FileInfoLiteDC
 {
+    /// <summary>
+    /// Gets or sets the path.
+    /// </summary>
     public string? Path { get; set; } = null;
 
+    /// <summary>
+    /// Gets or sets the name.
+    /// </summary>
     public string? Name { get; set; } = null;
 
+    /// <summary>
+    /// Gets or sets the size.
+    /// </summary>
     public long Size { get; set; } = 0;
 
+    /// <summary>
+    /// Gets or sets the directory.
+    /// </summary>
     public string? Directory { get; set; } = null;
 
     /// <summary>

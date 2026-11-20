@@ -1,15 +1,32 @@
 namespace SunamoSolutionsIndexer;
 
+/// <summary>
+/// Represents the folders with solutions type.
+/// </summary>
 public partial class FoldersWithSolutions
 {
     // Was static on 3-10-23 but don't know why when solutions is instance field
+    /// <summary>
+    /// Gets or sets the solutions.
+    /// </summary>
     public List<SolutionFolder> Solutions { get; set; } = null!;
 
     // Path to documents folder, e.g., D:\Documents
+    /// <summary>
+    /// Gets or sets the documents folder.
+    /// </summary>
     public string DocumentsFolder { get; set; } = null!;
 
     private static Type Type = typeof(FoldersWithSolutions);
+    /// <summary>
+    /// Gets or sets the used repository.
+    /// </summary>
     public static RepositoryLocal UsedRepository { get; set; } = RepositoryLocal.Vs17;
+    /// <summary>
+    /// Identify project type.
+    /// </summary>
+    /// <param name="FoldersWithSolutions">The folders with solutions.</param>
+    /// <returns>The identify project type result.</returns>
     protected static void IdentifyProjectType(string documentsFolder, string solutionFolder, SolutionFolder solutionFolderData)
     {
         // SolutionFolderSerialize doesn't have InVsFolder or typeProjectFolder
@@ -32,7 +49,16 @@ public partial class FoldersWithSolutions
     }
 
     // Folder where to search for Projects folder and Visual Studio folders. Added here when calling FoldersWithSolutions ctor. If no sln, call new FoldersWithSolutions(BasePathsHelper.Vs, null);
+    /// <summary>
+    /// Gets or sets the fwss.
+    /// </summary>
     public static FoldersWithSolutionsList Fwss { get; set; } = new FoldersWithSolutionsList();
+    /// <summary>
+    /// Insert into fwss.
+    /// </summary>
+    /// <param name="BasePathsHelper.Vs">The base paths helper vs.</param>
+    /// <param name="null">The null.</param>
+    /// <returns>The insert into fwss result.</returns>
     public static void InsertIntoFwss(ILogger logger, string documentsFolder, PpkOnDriveDC toSelling, bool addAlsoSolutions = true)
     {
         new FoldersWithSolutions(logger, documentsFolder, toSelling, addAlsoSolutions);
@@ -40,6 +66,12 @@ public partial class FoldersWithSolutions
 
     // This class should be instaniate only once and then call reload by needs
     // A1 toSelling can be null
+    /// <summary>
+    /// Folders with solutions.
+    /// </summary>
+    /// <param name="BasePathsHelper.Vs">The base paths helper vs.</param>
+    /// <param name="null">The null.</param>
+    /// <returns>The folders with solutions result.</returns>
     public FoldersWithSolutions(ILogger logger, string documentsFolder, PpkOnDriveDC toSelling, bool addAlsoSolutions = true)
     {
         // documentsFolder can be null / SE, I fill it in from actualPlatform afterwards anyway
@@ -54,6 +86,11 @@ public partial class FoldersWithSolutions
     // Cannot use, FoldersWithSolutions is not derived from FoldersWithSolutions
     }
 
+    /// <summary>
+    /// Folders with solutions.
+    /// </summary>
+    /// <param name="documentsFolder">The documents folder.</param>
+    /// <returns>The folders with solutions result.</returns>
     public FoldersWithSolutions(FoldersWithSolutions fws2)
     {
         Solutions = fws2.Solutions;
@@ -62,6 +99,10 @@ public partial class FoldersWithSolutions
         OnlyRealLoadedSolutionsFolders = FoldersWithSolutions.OnlyRealLoadedSolutionsFolders;
     }
 
+    /// <summary>
+    /// Initializes a new instance of the solutions with files class.
+    /// </summary>
+    /// <param name="this">The this.</param>
     public List<SolutionFolderWithFiles> SolutionsWithFiles()
     {
         List<SolutionFolderWithFiles> result = new List<SolutionFolderWithFiles>();
@@ -73,6 +114,10 @@ public partial class FoldersWithSolutions
         return result;
     }
 
+    /// <summary>
+    /// Reload.
+    /// </summary>
+    /// <returns>The reload result.</returns>
     public List<SolutionFolder> Reload(ILogger logger, string documentsFolder, PpkOnDriveDC toSelling /*, bool ignorePartAfterUnderscore = false*/)
     {
         PairProjectFolderWithEnum(logger, documentsFolder);
@@ -158,10 +203,22 @@ public partial class FoldersWithSolutions
         projectTypes.Add(ProjectsTypes.Cs, "Projects");
     }
 
+    /// <summary>
+    /// Gets or sets the only real loaded solutions folders.
+    /// </summary>
     public static List<string> OnlyRealLoadedSolutionsFolders { get; set; } = new List<string>();
 
     // In key is filename without .csproj, in value is full path
+    /// <summary>
+    /// Gets or sets the all csproj global.
+    /// </summary>
     public static Dictionary<string, List<string>> allCsprojGlobal { get; set; } = new Dictionary<string, List<string>>();
+    /// <summary>
+    /// All global csprojs.
+    /// </summary>
+    /// <param name="logger">The logger.</param>
+    /// <param name="listToClipboardInsteadOfThrowEx">The list to clipboard instead of throw ex.</param>
+    /// <returns>The all global csprojs result.</returns>
     public static
     async Task<Dictionary<string, List<string>>?>
  AllGlobalCsprojs(ILogger logger, bool listToClipboardInsteadOfThrowEx = false)
@@ -202,8 +259,17 @@ public partial class FoldersWithSolutions
         return allCsprojGlobal;
     }
 
+    /// <summary>
+    /// Gets or sets the projects with duplicate name.
+    /// </summary>
     public static List<string> ProjectsWithDuplicateName { get; set; } = new List<string>();
 
+    /// <summary>
+    /// Initializes a new instance of the is all project names unique class.
+    /// </summary>
+    /// <param name="allCsprojGlobal">The all csproj global.</param>
+    /// <param name="Path.GetFileNameWithoutExtension(item2)">The path get file name without extension item 2.</param>
+    /// <param name="item2">The item 2.</param>
     public static bool IsAllProjectNamesUnique(bool isListToClipboardInsteadOfThrowEx = false)
     {
         StringBuilder? stringBuilder = null;
@@ -240,6 +306,10 @@ public partial class FoldersWithSolutions
         return result;
     }
 
+    /// <summary>
+    /// Initializes a new instance of the create solution folder class.
+    /// </summary>
+    /// <param name="projectEntry.Value">The project entry value.</param>
     public static SolutionFolder CreateSolutionFolder(ILogger logger, string documentsFolder, SolutionFolderSerialize solutionFolder, PpkOnDriveDC toSelling, string? projName = null)
     {
         return CreateSolutionFolder(logger, documentsFolder, null!, solutionFolder.FullPathFolder, toSelling, projName);

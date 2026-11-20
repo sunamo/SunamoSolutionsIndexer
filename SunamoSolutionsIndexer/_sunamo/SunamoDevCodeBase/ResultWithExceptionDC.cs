@@ -5,8 +5,14 @@ namespace SunamoSolutionsIndexer._sunamo.SunamoDevCodeBase;
 /// </summary>
 public class ResultWithExceptionDC<T>
 {
+    /// <summary>
+    /// Gets or sets the data.
+    /// </summary>
     public T Data { get; set; } = default!;
 
+    /// <summary>
+    /// Gets or sets the exc.
+    /// </summary>
     public string Exc { get; set; } = null!;
 
     /// <summary>

@@ -2,6 +2,15 @@ namespace SunamoSolutionsIndexer.Data.SolutionFolderNs;
 
 public partial class SolutionFolder : SolutionFolderSerialize, ISolutionFolder
 {
+    /// <summary>
+    /// Exe to release.
+    /// </summary>
+    /// <param name="solution">The solution.</param>
+    /// <param name="projectDistinction">The project distinction.</param>
+    /// <param name="standaloneSlnForProject">The standalone sln for project.</param>
+    /// <param name="addProtectedWhenSelling">The add protected when selling.</param>
+    /// <param name="publish">The publish.</param>
+    /// <returns>The exe to release result.</returns>
     public string? ExeToRelease(SolutionFolder solution, string projectDistinction, bool standaloneSlnForProject, bool addProtectedWhenSelling = false, bool publish = false)
     {
         var exeName = solution.NameSolution;
@@ -183,6 +192,10 @@ public partial class SolutionFolder : SolutionFolderSerialize, ISolutionFolder
         return null;
     }
 
+    /// <summary>
+    /// Have git folder.
+    /// </summary>
+    /// <returns>The have git folder result.</returns>
     public bool HaveGitFolder()
     {
         var gitFolderPath = Path.Combine(FullPathFolder, VisualStudioTempFse.GitFolderName);

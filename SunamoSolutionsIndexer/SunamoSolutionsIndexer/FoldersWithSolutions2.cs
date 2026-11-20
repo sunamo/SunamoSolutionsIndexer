@@ -14,12 +14,25 @@ public partial class FoldersWithSolutions
         }
     }
 
+    /// <summary>
+    /// Full path folders.
+    /// </summary>
+    /// <param name="usedRepository">The used repository.</param>
+    /// <param name="returnOnlyThese">The return only these.</param>
+    /// <returns>The full path folders result.</returns>
     public static List<string> FullPathFolders(RepositoryLocal usedRepository, List<string>? returnOnlyThese = null)
     {
         Dictionary<string, SolutionFolder>? solutionFoldersMap = null;
         return FullPathFolders(usedRepository, solutionFoldersMap, returnOnlyThese);
     }
 
+    /// <summary>
+    /// Full path folders.
+    /// </summary>
+    /// <param name="usedRepository">The used repository.</param>
+    /// <param name="solutionFoldersMap">The solution folders map.</param>
+    /// <param name="returnOnlyThese">The return only these.</param>
+    /// <returns>The full path folders result.</returns>
     public static List<string> FullPathFolders(RepositoryLocal usedRepository, Dictionary<string, SolutionFolder>? solutionFoldersMap, List<string>? returnOnlyThese = null)
     {
         List<string> lines = new List<string>();

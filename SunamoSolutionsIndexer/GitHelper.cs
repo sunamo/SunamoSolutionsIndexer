@@ -1,5 +1,8 @@
 namespace SunamoSolutionsIndexer;
 
+/// <summary>
+/// Represents the git helper type.
+/// </summary>
 public class GitHelper
 {
     //https://radekjancik.visualstudio.com/AllProjectsSearch.Cmd.Parallel/_git/AllProjectsSearch.Cmd.Parallel
@@ -33,6 +36,11 @@ public class GitHelper
     // https://bitbucket.org/sunamo/1gp-gopay-master
     private const string BaseUrlBitbucket = @"https://bitbucket.org/sunamo/";
 
+    /// <summary>
+    /// Powershell for pull.
+    /// </summary>
+    /// <param name="folders">The folders.</param>
+    /// <returns>The powershell for pull result.</returns>
     public static string PowershellForPull(List<string> folders)
     {
         var gitBashBuilder = new GitBashBuilder(new TextBuilderDC());
@@ -46,6 +54,18 @@ public class GitHelper
         return pullAllResult;
     }
 
+    /// <summary>
+    /// Push solution.
+    /// </summary>
+    /// <param name="release">The release.</param>
+    /// <param name="gitBashBuilder">The git bash builder.</param>
+    /// <param name="pushArgs">The push args.</param>
+    /// <param name="commitMessage">The commit message.</param>
+    /// <param name="fullPathFolder">The full path folder.</param>
+    /// <param name="pushSolutionsData">The push solutions data.</param>
+    /// <param name="gitStatus">The git status.</param>
+    /// <param name="psInvoke">The ps invoke.</param>
+    /// <returns>The push solution result.</returns>
     public static
         async Task<bool>
         PushSolution(bool release, GitBashBuilder gitBashBuilder, string pushArgs, string commitMessage,
@@ -130,6 +150,11 @@ public class GitHelper
         return false;
     }
 
+    /// <summary>
+    /// Name of repo from origin uri.
+    /// </summary>
+    /// <param name="originUri">The origin uri.</param>
+    /// <returns>The name of repo from origin uri result.</returns>
     public static string NameOfRepoFromOriginUri(string originUri)
     {
         originUri = HttpUtility.UrlDecode(originUri);

@@ -6,6 +6,9 @@ namespace SunamoSolutionsIndexer._sunamo.SunamoDevCodeBase;
 /// </summary>
 public class PpkOnDriveDC : PpkOnDriveDevCodeBase<string>
 {
+    /// <summary>
+    /// Gets or sets the remove duplicates.
+    /// </summary>
     public bool RemoveDuplicates { get; set; } = false;
 
     /// <summary>
@@ -30,6 +33,9 @@ public class PpkOnDriveDC : PpkOnDriveDevCodeBase<string>
     {
     }
 
+    /// <summary>
+    /// Load.
+    /// </summary>
     public override
         async Task
         Load()

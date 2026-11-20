@@ -8,9 +8,18 @@ public class TextBuilderDC
     private bool _canUndo = false;
     private int _lastIndex = -1;
     private string _lastText = "";
+    /// <summary>
+    /// The string builder.
+    /// </summary>
     public StringBuilder stringBuilder = null!;
+    /// <summary>
+    /// Gets or sets the prepend every no white.
+    /// </summary>
     public string prependEveryNoWhite { get; set; } = string.Empty;
 
+    /// <summary>
+    /// Gets or sets the list.
+    /// </summary>
     public List<string> list { get; set; } = null!;
     private bool _useList = false;
 
@@ -45,6 +54,9 @@ public class TextBuilderDC
         }
     }
 
+    /// <summary>
+    /// The can undo.
+    /// </summary>
     public bool CanUndo
     {
         get

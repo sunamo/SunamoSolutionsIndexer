@@ -1,29 +1,58 @@
 namespace SunamoSolutionsIndexer;
 
+/// <summary>
+/// Represents the xml documents cache type.
+/// </summary>
 public class XmlDocumentsCache
 {
     private const string Nullable = "<Nullable>enable</Nullable>";
     private const string DebugTypeNone = "<DebugType>none</DebugType>";
+    /// <summary>
+    /// The type.
+    /// </summary>
     public static Type Type = typeof(XmlDocumentsCache);
+    /// <summary>
+    /// The cache.
+    /// </summary>
     public static Dictionary<string, XmlDocument> Cache = new();
 
     // In key is csproj path
     // In value is absolute path of references (recursive)
+    /// <summary>
+    /// The project deps.
+    /// </summary>
     public static Dictionary<string, List<string>> ProjectDeps = new();
 
+    /// <summary>
+    /// Delegate that builds the project dependency tree list.
+    /// </summary>
     public static Func<string, Dictionary<string, XmlDocument>?,
             Task<List<string>>
         >
         BuildProjectsDependencyTreeList = null!;
 
+    /// <summary>
+    /// The nulled.
+    /// </summary>
     public static int Nulled;
+    /// <summary>
+    /// The clpb.
+    /// </summary>
     public static IProgressBarDC? Clpb = null;
+    /// <summary>
+    /// The cant be load with dict to avoid collection was changed but can with null.
+    /// </summary>
     public static List<string> CantBeLoadWithDictToAvoidCollectionWasChangedButCanWithNull = new();
 
     // Cannot be called together with .Result! See https://stackoverflow.com/a/65820543/9327173 It causes a deadlock! I must
     // do via ThisApp.async_
     // Can return null during many situations
     // For example when ignored => must always checking for null
+    /// <summary>
+    /// Get.
+    /// </summary>
+    /// <param name="path">The path.</param>
+    /// <returns>The get result.</returns>
     public static
         async Task<ResultWithExceptionDC<XmlDocument>>
         Get(string path)
@@ -112,6 +141,11 @@ public class XmlDocumentsCache
         }
     }
 
+    /// <summary>
+    /// Initializes a new instance of the build project deps class.
+    /// </summary>
+    /// <param name="path">The path.</param>
+    /// <param name="null">The null.</param>
     public static Dictionary<string, XmlDocument> BuildProjectDeps()
     {
         var xd = new Dictionary<string, XmlDocument>();
@@ -124,6 +158,10 @@ public class XmlDocumentsCache
         return xd;
     }
 
+    /// <summary>
+    /// Bad xml.
+    /// </summary>
+    /// <returns>The bad xml result.</returns>
     public static List<string> BadXml()
     {
         var withNull = Cache.Where(entry => entry.Value == null);
@@ -132,6 +170,12 @@ public class XmlDocumentsCache
         return badXmlPaths;
     }
 
+    /// <summary>
+    /// Set.
+    /// </summary>
+    /// <param name="path">The path.</param>
+    /// <param name="xmlContent">The xml content.</param>
+    /// <param name="saveToFile">The save to file.</param>
     public static
         async Task
         Set(string path, string xmlContent, bool saveToFile = false)
@@ -143,6 +187,12 @@ public class XmlDocumentsCache
             Set(path, xd, saveToFile);
     }
 
+    /// <summary>
+    /// Set.
+    /// </summary>
+    /// <param name="path">The path.</param>
+    /// <param name="document">The document.</param>
+    /// <param name="saveToFile">The save to file.</param>
     public static
         async Task
         Set(string path, XmlDocument document, bool saveToFile = false)

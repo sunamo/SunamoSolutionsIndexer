@@ -3,12 +3,31 @@ namespace SunamoSolutionsIndexer;
 public partial class FoldersWithSolutions
 {
     // toSelling can be null
+    /// <summary>
+    /// Create solution folder.
+    /// </summary>
+    /// <param name="logger">The logger.</param>
+    /// <param name="documentsFolder">The documents folder.</param>
+    /// <param name="solutionFolder">The solution folder.</param>
+    /// <param name="toSelling">The to selling.</param>
+    /// <param name="projName">The proj name.</param>
+    /// <returns>The create solution folder result.</returns>
     public static SolutionFolder CreateSolutionFolder(ILogger logger, string documentsFolder, string solutionFolder, PpkOnDriveDC toSelling, string? projName = null)
     {
         return CreateSolutionFolder(logger, documentsFolder, null!, solutionFolder, toSelling, projName);
     }
 
     // toSelling can be null
+    /// <summary>
+    /// Create solution folder.
+    /// </summary>
+    /// <param name="logger">The logger.</param>
+    /// <param name="documentsFolder">The documents folder.</param>
+    /// <param name="solutionFolderData">The solution folder data.</param>
+    /// <param name="solutionFolder">The solution folder.</param>
+    /// <param name="toSelling">The to selling.</param>
+    /// <param name="projName">The proj name.</param>
+    /// <returns>The create solution folder result.</returns>
     public static SolutionFolder CreateSolutionFolder(ILogger logger, string documentsFolder, SolutionFolderSerialize solutionFolderData, string solutionFolder, PpkOnDriveDC toSelling, string? projName = null)
     {
         if (projName == null)
@@ -65,6 +84,11 @@ public partial class FoldersWithSolutions
         return SolutionsIndexerHelper.GetDisplayedSolutionName(item);
     }
 
+    /// <summary>
+    /// Solutions uap.
+    /// </summary>
+    /// <param name="skipThese">The skip these.</param>
+    /// <returns>The solutions uap result.</returns>
     public List<SolutionFolder> SolutionsUap(IList<string>? skipThese = null)
     {
         var slns = GetSolutions(RepositoryLocal.Vs17, false, skipThese);
@@ -72,6 +96,12 @@ public partial class FoldersWithSolutions
         return uap;
     }
 
+    /// <summary>
+    /// Solutions wildcard.
+    /// </summary>
+    /// <param name="repository">The repository.</param>
+    /// <param name="wildcardPattern">The wildcard pattern.</param>
+    /// <returns>The solutions wildcard result.</returns>
     public IList<SolutionFolder> SolutionsWildcard(RepositoryLocal repository, string wildcardPattern)
     {
         var result = GetSolutions(repository);
@@ -90,6 +120,13 @@ public partial class FoldersWithSolutions
     // Gets solutions from repository with optional filtering
     // Excludes from SolutionsIndexerConsts.SolutionsExcludeWhileWorkingOnSourceCode if Debugger is attached and !loadAll
     // skipThese can use wildcard patterns
+    /// <summary>
+    /// Get solutions.
+    /// </summary>
+    /// <param name="repository">The repository.</param>
+    /// <param name="isLoadingAll">The is loading all.</param>
+    /// <param name="skipThese">The skip these.</param>
+    /// <returns>The get solutions result.</returns>
     public List<SolutionFolder> GetSolutions(RepositoryLocal repository, bool isLoadingAll = true, IList<string>? skipThese = null)
     {
         var result = new List<SolutionFolder>(Solutions);
@@ -188,6 +225,11 @@ public partial class FoldersWithSolutions
         return projects;
     }
 
+    /// <summary>
+    /// Return normal and special folders.
+    /// </summary>
+    /// <param name="folder">The folder.</param>
+    /// <returns>The return normal and special folders result.</returns>
     public static Tuple<List<string>, List<string>> ReturnNormalAndSpecialFolders(string folder)
     {
         List<string>? specialFolders = null;
@@ -196,6 +238,12 @@ public partial class FoldersWithSolutions
         return new Tuple<List<string>, List<string>>(normalFolders, specialFolders);
     }
 
+    /// <summary>
+    /// Return normal and special folders.
+    /// </summary>
+    /// <param name="folder">The folder.</param>
+    /// <param name="specialFolders">The special folders.</param>
+    /// <param name="normalFolders">The normal folders.</param>
     public static void ReturnNormalAndSpecialFolders(string folder, out List<string> specialFolders, out List<string> normalFolders)
     {
         specialFolders = new List<string>();
