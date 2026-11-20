@@ -20,6 +20,7 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <EmbedAllSources>true</EmbedAllSources>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageTags>sunamo;dotnet;solutions;indexer</PackageTags>
   </PropertyGroup>
   <PropertyGroup>
     <DebugType>portable</DebugType>
