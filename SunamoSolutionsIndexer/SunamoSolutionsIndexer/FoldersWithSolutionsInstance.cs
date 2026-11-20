@@ -5,7 +5,7 @@
 
 
 //    /// <summary>
-//    /// Složka ve které se má hledat na složku Projects a složky Visual Studia
+//    /// Folder in which to search for the Projects folder and the Visual Studio folders
 
 //    #region ctor
 //    /// <summary>
@@ -13,10 +13,10 @@
 //    /// This class should be instaniate only once and then call reload by needs
 //    /// A1 toSelling can be null
 
-//        // documentsFolder může být null / SE, stejně to poté doplňuji z actualPlatform
+//        // documentsFolder can be null / SE, I fill it in afterwards from actualPlatform anyway
 
 
-//        // musím nastavit až na konci když přiřadím veškeré proměnné
+//        // I must set it only at the end, after all variables are assigned
 
 //    #region Returns solutions in various objects
 
@@ -84,7 +84,7 @@
 
 
 
-//        // Nevím zda je to nutné tak jsem to zakomentoval aby to bylo rychlejší
+//        // I do not know whether it is necessary, so I commented it out to make it faster
 
 
 
@@ -113,7 +113,7 @@
 //    /// </summary>
 
 
-//        // TODO: Dočasně toto zakomentuji. Stejně tu už nemám žádné BitBuckety a mám všude Vs17, přičemž ve result jsou všechny All, takže mi to nevracelo nic
+//        // TODO: I am commenting this out temporarily. I no longer have any BitBuckets anyway and I have Vs17 everywhere, while result contains all All, so it returned nothing
 
 
 
@@ -149,7 +149,7 @@
 
 
 
-//        // TODO: dodělat to podle ProjectsTypes prioritize, ale otázka je jestli to vůbec potřebuji
+//        // TODO: finish it according to ProjectsTypes prioritize, but the question is whether I need it at all
 
 
 

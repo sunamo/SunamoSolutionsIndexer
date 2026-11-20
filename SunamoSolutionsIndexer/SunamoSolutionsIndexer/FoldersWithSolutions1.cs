@@ -31,7 +31,7 @@ public partial class FoldersWithSolutions
         IdentifyProjectType(documentsFolder, solutionFolder, solutionFolderInstance);
         solutionFolderInstance.DisplayedText = GetDisplayedName(solutionFolder);
         solutionFolderInstance.FullPathFolder = solutionFolder;
-        // Nevím zda je to nutné tak jsem to zakomentoval aby to bylo rychlejší
+        // I do not know whether it is necessary so I commented it out to make it faster
         solutionFolderInstance.UpdateModules(logger, toSelling);
         solutionFolderInstance.NameSolutionWithoutDiacritic = SH.TextWithoutDiacritic(projName);
         return solutionFolderInstance;

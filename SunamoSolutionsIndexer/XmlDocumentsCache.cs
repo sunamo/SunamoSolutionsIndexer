@@ -20,15 +20,15 @@ public class XmlDocumentsCache
     public static IProgressBarDC? Clpb = null;
     public static List<string> CantBeLoadWithDictToAvoidCollectionWasChangedButCanWithNull = new();
 
-    // Nemůže se volat společně s .Result! viz. https://stackoverflow.com/a/65820543/9327173 Způsobí to deadlock! Musím to
-    // dělat přes ThisApp.async_
+    // Cannot be called together with .Result! See https://stackoverflow.com/a/65820543/9327173 It causes a deadlock! I must
+    // do via ThisApp.async_
     // Can return null during many situations
     // For example when ignored => must always checking for null
     public static
         async Task<ResultWithExceptionDC<XmlDocument>>
         Get(string path)
     {
-        // Tady to mít je píčovina. To se nemůže nikdy s malým vyskytnout
+        // Having this here is pointless. It can never occur with lowercase
         if (Cache.ContainsKey(path)) return new ResultWithExceptionDC<XmlDocument>(Cache[path]);
         if (Ignored.IsIgnored(path))
         {
@@ -41,11 +41,11 @@ public class XmlDocumentsCache
         var doc = new XmlDocument();
         // HACK: XmlStreamReader will fail if the file is encoded in UTF-8 but has <?xml version="1.0" encoding="utf-16"?>
         // To work around this, we load the XML content into a string and use XmlDocument.LoadXml() instead.
-        // Zde bylo async. Ale na řádku s .ConfigureAwait(false) se to zaseklo. Proto je tu teď pouze ReadAllText
+        // This used to be async. But it got stuck on the line with .ConfigureAwait(false). That is why there is only ReadAllText now
         string? xml = null;
         xml =
-            // Tohle nechápu. FubuCsProjFile i SunamoExceptions jsou net7.0.
-            // co to je za dementní chybu This call site is reachable on all platforms. 'File.ReadAllTextAsyncAsync(string)' is only supported on: 'Windows' 7.0 and later.
+            // I do not get this. FubuCsProjFile and SunamoExceptions are both net7.0.
+            // what a stupid error is this: This call site is reachable on all platforms. 'File.ReadAllTextAsyncAsync(string)' is only supported on: 'Windows' 7.0 and later.
             await
                 FileAsync.ReadAllTextAsync(path);
         if (xml.Contains(GitConsts.startingHead))
@@ -75,7 +75,7 @@ public class XmlDocumentsCache
         {
             doc.PreserveWhitespace = true;
             doc.LoadXml(xml);
-            // Zřejmě mi toto vyhazovalo výjimku
+            // This apparently threw an exception for me
             Cache.Add(path, doc);
         }
         catch
@@ -86,7 +86,7 @@ public class XmlDocumentsCache
             return new ResultWithExceptionDC<XmlDocument>();
         }
 
-        // Toto bych měl dělat mimo Parallel
+        // I should do this outside Parallel
         if (BuildProjectsDependencyTreeList != null)
         {
             var list =
@@ -115,10 +115,10 @@ public class XmlDocumentsCache
     public static Dictionary<string, XmlDocument> BuildProjectDeps()
     {
         var xd = new Dictionary<string, XmlDocument>();
-        // Všechny načtené XML dokumenty do xd
+        // All loaded XML documents into xd
         foreach (var item in Cache)
-            // Zde je problémů několik. xd má pouhý 1 element, ačkoliv XmlDocumentsCache.Cache jich má 41
-            // ProjectDeps má poté 41.
+            // There are several problems here. xd has only 1 element, although XmlDocumentsCache.Cache has 41
+            // ProjectDeps then has 41.
             if (item.Value != null)
                 xd.Add(item.Key, item.Value);
         return xd;

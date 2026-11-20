@@ -43,7 +43,7 @@ public partial class FoldersWithSolutions
     // A1 toSelling can be null
     public FoldersWithSolutions(ILogger logger, string documentsFolder, PpkOnDriveDC toSelling, bool addAlsoSolutions = true)
     {
-        // documentsFolder může být null / SE, stejně to poté doplňuji z actualPlatform
+        // documentsFolder can be null / SE, I fill it in from actualPlatform afterwards anyway
         ThrowEx.DirectoryExists(documentsFolder);
         this.DocumentsFolder = documentsFolder;
         if (addAlsoSolutions)
@@ -52,7 +52,7 @@ public partial class FoldersWithSolutions
         }
 
         Fwss.Add(this);
-    // Nemůžu použít, FoldersWithSolutions není odvozené od FoldersWithSolutions
+    // Cannot use, FoldersWithSolutions is not derived from FoldersWithSolutions
     }
 
     public FoldersWithSolutions(FoldersWithSolutions fws2)
@@ -140,12 +140,12 @@ public partial class FoldersWithSolutions
                 if (parameter == ProjectsTypes.None)
                 {
                     /* 
-                     * Toto byl nesmysl. Když vytvořím novou složku (což vytvářím často, protože se furt něco nového učím)
-                     * musím upravit i SunamoDevCode. Vytvořit nový nuget. 
-                     * Pak ho updatovat do různých apps. Jen CommandsToAll* mám 3. 
-                     * Zbuildit, zkopírovat, teprve pak to funguje. 
+                     * This was nonsense. When I create a new folder (which I do often, because I am constantly learning something new)
+                     * I must also modify SunamoDevCode. Create a new nuget. 
+                     * Then update it in the various apps. I have 3 CommandsToAll* alone. 
+                     * Build, copy, only then it works. 
                      * 
-                     * Navíc si nepamatuji že bych toto kdekoliv použil.
+                     * Besides, I do not remember using this anywhere.
                      */
                     logger.LogWarning(Translate.FromKey(XlfKeys.CanTAssignToEnumTypeOfFolder) + " " + item);
                 }

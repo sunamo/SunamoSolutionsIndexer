@@ -12,7 +12,7 @@ public enum TypeOfExtensionDC
     documentBinary,
     database,
 
-    // prošel jsem zda v AllExtension jsou všechny textové
+    // I went through whether AllExtension contains all text ones
     configText,
 
     // XML, JSON, mdf, ldf, sdf, atd.
@@ -21,21 +21,21 @@ public enum TypeOfExtensionDC
 
     contentBinary,
 
-    // prošel jsem zda v AllExtension jsou všechny textové
+    // I went through whether AllExtension contains all text ones
     // ini, atd.
     settingsText,
 
-    // prošel jsem zda v AllExtension jsou všechny textové
+    // I went through whether AllExtension contains all text ones
     visual_studioText,
 
     executable,
     binary,
 
-    // u resourců by to asi tak nevadilo kdyby byly zakódovany třeba ve b64 ale pro jistotu je všechny řadím do binárních
-    // ať je nepoškodím
+    // for resources it would probably not matter if they were encoded e.g. in b64, but to be safe I sort them all as binary
+    // so that I do not damage them
     resource,
 
-    // prošel jsem zda v AllExtension jsou všechny textové
+    // I went through whether AllExtension contains all text ones
     // sql, cmd, ps1,
     script,
 
@@ -44,6 +44,6 @@ public enum TypeOfExtensionDC
     temporary,
 
     // Is used when extension isn't know
-    // U ostatních souborů vypsat jejich popis z windows
+    // For other files, print their description from Windows
     other
 }

@@ -8,7 +8,7 @@ internal class VisualStudioTempFse
     public static List<string>? IgnoredForIndexing = null;
 
     // "packages" cannot be here - after every cleaning, which is most time very often, must open sunamo sln and compile all
-    // bin je např. in _Docker\DockerFromBeginWebForms,Analyzer1\Analyzer1 \Analyzer1 \Analyzer1.Test \Analyzer1.Vsix
+    // bin is e.g. in _Docker\DockerFromBeginWebForms,Analyzer1\Analyzer1 \Analyzer1 \Analyzer1.Test \Analyzer1.Vsix
 
 
     // Is in foldersInSolutionToKeep

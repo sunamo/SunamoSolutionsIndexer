@@ -7,8 +7,8 @@ public partial class SolutionFolder : SolutionFolderSerialize, ISolutionFolder
         var exeName = solution.NameSolution;
         var exeNameWithExt = exeName + AllExtensions.ExeExtension;
 
-        // Zbuildená appka může být buď v hlavním checkoutu, nebo v jeho "-claude" worktree
-        // (konvence <Repo>-claude) - vezme se ten s novějším exe.
+        // The built app can be either in the main checkout or in its "-claude" worktree
+        // (the <Repo>-claude convention) - the one with the newer exe is taken.
         var roots = new[]
         {
             solution.FullPathFolder.TrimEnd('\\'),
@@ -80,9 +80,9 @@ public partial class SolutionFolder : SolutionFolderSerialize, ISolutionFolder
         return existingExeReleaseFolder == null ? null : Path.Combine(existingExeReleaseFolder, exeNameWithExt);
     }
 
-    // Projektová složka uvnitř řešení obvykle sdílí jméno s repem (exeName), ale ne vždy - repo
-    // se může jmenovat jinak než produktový projekt uvnitř něj (např. repo "PerfectHome.Ava.Core",
-    // projekt "PerfectHome.Ava"). Když přímá shoda nenajde nic, prohledá ostatní podsložky.
+    // The project folder inside the solution usually shares its name with the repo (exeName), but not always - the repo
+    // can be named differently than the product project inside it (e.g. repo "PerfectHome.Ava.Core",
+    // project "PerfectHome.Ava"). When a direct match finds nothing, it searches the other subfolders.
     private string? FindProjectFolderPathByExeName(string solutionFolder, string exeName, string exeNameWithExt)
     {
         var direct = Path.Combine(solutionFolder, exeName);
@@ -128,8 +128,8 @@ public partial class SolutionFolder : SolutionFolderSerialize, ISolutionFolder
         return null;
     }
 
-    // TFM složka může mít libovolný postfix za "-windows" (verze Windows API, např.
-    // "net10.0-windows7.0") nebo žádný - porovnává se jen číslo netX.Y, postfix se ignoruje.
+    // The TFM folder can have any postfix after "-windows" (Windows API version, e.g.
+    // "net10.0-windows7.0") or none - only the netX.Y number is compared, the postfix is ignored.
     private static readonly Regex NetVersionWindowsRegex = new(@"^net(?<v>\d+\.\d+)-windows(\d+(\.\d+)*)?$", RegexOptions.IgnoreCase);
     private static readonly Regex NetVersionPlainRegex = new(@"^net(?<v>\d+\.\d+)$", RegexOptions.IgnoreCase);
 

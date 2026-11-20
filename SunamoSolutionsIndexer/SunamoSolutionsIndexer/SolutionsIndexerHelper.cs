@@ -30,7 +30,7 @@ public class SolutionsIndexerHelper
             return result;
         }
 
-        // Fallback: zkusí variantu s "-claude" suffixem (worktree repos)
+        // Fallback: tries the variant with the "-claude" suffix (worktree repos)
         var claudeName = name + "-claude";
         result = SolutionWithNameExact(claudeName);
 
