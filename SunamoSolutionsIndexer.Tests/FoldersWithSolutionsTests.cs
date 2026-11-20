@@ -1,4 +1,3 @@
-// variables names: ok
 namespace SunamoDevCode.Tests;
 
 using Microsoft.Extensions.Logging;

@@ -1,4 +1,3 @@
-// variables names: ok
 namespace SunamoDevCode.Tests.Data.SolutionFolderNs;
 
 using Microsoft.Extensions.Logging;

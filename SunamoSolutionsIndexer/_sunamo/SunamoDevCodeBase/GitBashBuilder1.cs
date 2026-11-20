@@ -1,6 +1,5 @@
 namespace SunamoSolutionsIndexer._sunamo.SunamoDevCodeBase;
 
-// Variable names have been checked and replaced with self-descriptive names
 /// <summary>
 /// Builder of git bash commands.
 /// </summary>

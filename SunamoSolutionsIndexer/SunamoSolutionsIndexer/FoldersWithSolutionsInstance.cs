@@ -1,4 +1,3 @@
-// variables names: ok
 
 
 //    /// D:\Documents

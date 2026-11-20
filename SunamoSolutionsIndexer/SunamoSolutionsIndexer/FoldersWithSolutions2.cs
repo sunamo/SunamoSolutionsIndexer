@@ -1,6 +1,5 @@
 namespace SunamoSolutionsIndexer;
 
-// Variable names have been checked and replaced with self-descriptive names
 public partial class FoldersWithSolutions
 {
     void AddProjectsFolder(List<string> projects, string folder)

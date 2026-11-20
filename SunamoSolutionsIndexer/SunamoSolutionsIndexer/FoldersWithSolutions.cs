@@ -1,6 +1,5 @@
 namespace SunamoSolutionsIndexer;
 
-// Variable names have been checked and replaced with self-descriptive names
 public partial class FoldersWithSolutions
 {
     // Was static on 3-10-23 but don't know why when solutions is instance field
