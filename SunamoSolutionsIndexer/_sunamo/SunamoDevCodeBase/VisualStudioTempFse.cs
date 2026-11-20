@@ -7,16 +7,10 @@ internal class VisualStudioTempFse
 {
     public static List<string>? IgnoredForIndexing = null;
 
-    //public static List<string> foldersInSolutionToDeleteWithWildcard = new List<string> { "Backup*" };
     // "packages" cannot be here - after every cleaning, which is most time very often, must open sunamo sln and compile all
     // bin je např. in _Docker\DockerFromBeginWebForms,Analyzer1\Analyzer1 \Analyzer1 \Analyzer1.Test \Analyzer1.Vsix
 
-    //public static List<string> foldersInSolutionToDelete = null;
 
-    //public AllProjectsSearchConsts()
-    //{
-    //    foldersInSolutionToDelete = foldersInSolutionToDeleteWithWildcard.Concat(foldersInSolutionToDeleteWoWildcard).ToArray();
-    //}
     // Is in foldersInSolutionToKeep
     public const string GitFolderName = ".git";
 

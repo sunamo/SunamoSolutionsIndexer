@@ -44,10 +44,6 @@ public abstract class PpkOnDriveDevCodeBase<T> : List<T>
         {
             isSaving = true;
             var removedOrNotExists = false;
-            //if (FS.ExistsFile(args.File))
-            //{
-            //    removedOrNotExists = FS.TryDeleteFile(args.File);
-            //}
             if (removedOrNotExists)
             {
                 string content;
@@ -85,7 +81,6 @@ public abstract class PpkOnDriveDevCodeBase<T> : List<T>
     {
         this.args = args;
         File.AppendAllText(args.File, "");
-        //FS.CreateFileIfDoesntExists(args.File);
         Load(args.Load);
         if (args.LoadChangesFromDrive)
         {

@@ -29,7 +29,6 @@ public class XmlDocumentsCache
         Get(string path)
     {
         // Tady to mít je píčovina. To se nemůže nikdy s malým vyskytnout
-        //path = SH.FirstCharUpper(path);
         if (Cache.ContainsKey(path)) return new ResultWithExceptionDC<XmlDocument>(Cache[path]);
         if (Ignored.IsIgnored(path))
         {
@@ -43,23 +42,12 @@ public class XmlDocumentsCache
         // HACK: XmlStreamReader will fail if the file is encoded in UTF-8 but has <?xml version="1.0" encoding="utf-16"?>
         // To work around this, we load the XML content into a string and use XmlDocument.LoadXml() instead.
         // Zde bylo async. Ale na řádku s .ConfigureAwait(false) se to zaseklo. Proto je tu teď pouze ReadAllText
-        //if (cache.ContainsKey(path))
-        //{
-        //    return cache[path];
-        //}
         string? xml = null;
-        //if (ThisApp.async_)
-        //{
         xml =
             // Tohle nechápu. FubuCsProjFile i SunamoExceptions jsou net7.0.
             // co to je za dementní chybu This call site is reachable on all platforms. 'File.ReadAllTextAsyncAsync(string)' is only supported on: 'Windows' 7.0 and later.
             await
                 FileAsync.ReadAllTextAsync(path);
-        //}
-        //else
-        //{
-        //    xml = FileAsync.ReadAllTextAsync(path);
-        //}
         if (xml.Contains(GitConsts.startingHead))
         {
             Cache.Add(path, null!);
@@ -88,11 +76,6 @@ public class XmlDocumentsCache
             doc.PreserveWhitespace = true;
             doc.LoadXml(xml);
             // Zřejmě mi toto vyhazovalo výjimku
-            //var ox = doc.OuterXml;
-            //if (Cache.ContainsKey(path))
-            //{
-            //    return Cache[path];
-            //}
             Cache.Add(path, doc);
         }
         catch
@@ -100,12 +83,9 @@ public class XmlDocumentsCache
             var index = Cache.Keys.ToList().IndexOf(path);
             Cache.Add(path, null!);
             Nulled++;
-            //ThrowEx.NotValidXml(path, ex);
             return new ResultWithExceptionDC<XmlDocument>();
         }
 
-        //lock (_lock)
-        //{
         // Toto bych měl dělat mimo Parallel
         if (BuildProjectsDependencyTreeList != null)
         {
@@ -115,7 +95,6 @@ public class XmlDocumentsCache
             ProjectDeps.Add(path, list);
         }
 
-        //}
         return new ResultWithExceptionDC<XmlDocument>(doc);
     }
 

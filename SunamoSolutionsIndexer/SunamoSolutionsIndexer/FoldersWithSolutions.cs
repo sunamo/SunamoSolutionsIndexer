@@ -43,7 +43,6 @@ public partial class FoldersWithSolutions
         new FoldersWithSolutions(logger, documentsFolder, toSelling, addAlsoSolutions);
     }
 
-    // A1 = D:\Documents
     // This class should be instaniate only once and then call reload by needs
     // A1 toSelling can be null
     public FoldersWithSolutions(ILogger logger, string documentsFolder, PpkOnDriveDC toSelling, bool addAlsoSolutions = true)
@@ -54,16 +53,10 @@ public partial class FoldersWithSolutions
         if (addAlsoSolutions)
         {
             Solutions = Reload(logger, documentsFolder, toSelling);
-        //if (Fwss.Count == 0)
-        //{
-        //    Fwss.AddRange(new FoldersWithSolutions() );
-        //}
         }
 
         Fwss.Add(this);
-    //    FoldersWithSolutions.Fwss.Add(new FoldersWithSolutions());
     // Nemůžu použít, FoldersWithSolutions není odvozené od FoldersWithSolutions
-    //Fwss.Add(new FoldersWithSolutions(this));
     }
 
     public FoldersWithSolutions(FoldersWithSolutions fws2)
@@ -130,11 +123,6 @@ public partial class FoldersWithSolutions
         }
 
         var p2 = documentsFolder;
-        //var p2 = BasePathsHelper.bp;
-        //if (!Directory.Exists(p2))
-        //{
-        //    return;
-        //}
         var folders = Directory.GetDirectories(p2, "*", SearchOption.TopDirectoryOnly);
         foreach (var item in folders)
         {
@@ -149,9 +137,6 @@ public partial class FoldersWithSolutions
                     case "C++":
                         parameter = ProjectsTypes.Cpp;
                         break;
-                    //case "":
-                    //    parameter = ProjectsTypes.Cs;
-                    //    break;
                     default:
                         parameter = EnumHelper.Parse(l2, ProjectsTypes.None);
                         break;

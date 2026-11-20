@@ -39,10 +39,8 @@ public class PpkOnDriveDC : PpkOnDriveDevCodeBase<string>
             AddRange(SHGetLines.GetLines(
                 await
                     FileAsync.ReadAllTextAsync(args.File)));
-            //CA.RemoveStringsEmpty2(this);
             if (RemoveDuplicates)
             {
-                //CAG.RemoveDuplicitiesList<string>(this);
                 var data = this.ToList();
                 await Clear();
                 data = data.Distinct().ToList();

@@ -8,7 +8,6 @@ namespace SunamoSolutionsIndexer._sunamo.SunamoDevCodeBase;
 //#else
 //SunamoLang
 //#endif
-//;
 /// <summary>
 /// Translation of keys.
 /// </summary>

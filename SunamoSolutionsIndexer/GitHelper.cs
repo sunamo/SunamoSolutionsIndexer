@@ -122,8 +122,6 @@ public class GitHelper
                 gitBashBuilder.AppendLine();
 
                 // Dont run, better is paste into powershell due to checking errors
-                //var git = gitBashBuilder.Commands;
-                //PowershellRunner.Instance.Invoke(git);
 
                 return true;
             }

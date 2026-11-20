@@ -11,7 +11,6 @@ public class SolutionsIndexerHelper
             System.Diagnostics.Debugger.Break();
         }
 
-        //bool specificNameOfScz = false;
         var originName = string.Empty;
 
         if (name.Contains(".sunamo.cz"))
@@ -171,7 +170,6 @@ public class SolutionsIndexerHelper
             {
                 files[i] = Path.GetFileNameWithoutExtension(files[i]);
             }
-            //files = Path.GetFileNamesWoExtension(files);
             foreach (var item in files)
             {
                 var module = Path.GetFileName(item);
