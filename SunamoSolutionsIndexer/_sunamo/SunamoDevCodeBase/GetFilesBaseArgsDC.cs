@@ -1,7 +1,6 @@
 namespace SunamoSolutionsIndexer._sunamo.SunamoDevCodeBase;
 
-// EN: Base arguments class for getting files
-// CZ: Základní třída argumentů pro získávání souborů
+// Base arguments class for getting files
 /// <summary>
 /// Base arguments for getting files.
 /// </summary>

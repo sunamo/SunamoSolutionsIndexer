@@ -6,7 +6,7 @@ namespace SunamoSolutionsIndexer._sunamo.SunamoDevCodeBase;
 internal class SHTrim
 {
 
-    // EN: Method TrimLeadingNumbersAtStart was removed - inlined in ConstsManager.cs:110
+    // Method TrimLeadingNumbersAtStart was removed - inlined in ConstsManager.cs:110
 
     /// <summary>
     /// Trims the given characters or suffix from the end.
@@ -18,7 +18,7 @@ internal class SHTrim
         return text;
     }
 
-    // EN: Method TrimStartAndEnd was removed - inlined in XmlLocalisationInterchangeFileFormat2.cs:691
+    // Method TrimStartAndEnd was removed - inlined in XmlLocalisationInterchangeFileFormat2.cs:691
 
     /// <summary>
     /// Trims the prefix from the start of the text.

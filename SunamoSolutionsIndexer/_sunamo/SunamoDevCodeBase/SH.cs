@@ -34,8 +34,7 @@ internal class SH
             var length = beforeIndex - foundIndex + 1;
             if (length < 1)
             {
-                // EN: This was here before but logically it's nonsense
-                // CZ: Takhle to tu bylo předtím ale logicky je to nesmysl
+                // This was here before but logically it's nonsense
             }
             result = text.Substring(foundIndex, length).Trim();
         }

@@ -1,7 +1,6 @@
 namespace SunamoSolutionsIndexer._sunamo.SunamoDevCodeBase;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+// Variable names have been checked and replaced with self-descriptive names
 /// <summary>
 /// Builder of git bash commands.
 /// </summary>

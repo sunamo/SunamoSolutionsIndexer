@@ -1,15 +1,12 @@
 namespace SunamoSolutionsIndexer;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+// Variable names have been checked and replaced with self-descriptive names
 public partial class FoldersWithSolutions
 {
-    // EN: Was static on 3-10-23 but don't know why when solutions is instance field
-    // CZ: 3-10-23 bylo static ale nevím proč když solutions je instanční
+    // Was static on 3-10-23 but don't know why when solutions is instance field
     public List<SolutionFolder> Solutions { get; set; } = null!;
 
-    // EN: Path to documents folder, e.g., D:\Documents
-    // CZ: D:\Documents
+    // Path to documents folder, e.g., D:\Documents
     public string DocumentsFolder { get; set; } = null!;
 
     private static Type Type = typeof(FoldersWithSolutions);
@@ -35,8 +32,7 @@ public partial class FoldersWithSolutions
         }
     }
 
-    // EN: Folder where to search for Projects folder and Visual Studio folders. Added here when calling FoldersWithSolutions ctor. If no sln, call new FoldersWithSolutions(BasePathsHelper.Vs, null);
-    // CZ: Složka ve které se má hledat na složku Projects a složky Visual Studia. Přidává se mi zde když volám ctor FoldersWithSolutions. Pokud nemám sln, zavolat new FoldersWithSolutions(BasePathsHelper.Vs, null);
+    // Folder where to search for Projects folder and Visual Studio folders. Added here when calling FoldersWithSolutions ctor. If no sln, call new FoldersWithSolutions(BasePathsHelper.Vs, null);
     public static FoldersWithSolutionsList Fwss { get; set; } = new FoldersWithSolutionsList();
     public static void InsertIntoFwss(ILogger logger, string documentsFolder, PpkOnDriveDC toSelling, bool addAlsoSolutions = true)
     {
@@ -83,8 +79,7 @@ public partial class FoldersWithSolutions
         PairProjectFolderWithEnum(logger, documentsFolder);
         // Get all projects in A1(Visual Studio Projects *) and GitHub folder
         List<string> solutionFolders = ReturnAllProjectFolders(documentsFolder /*, Path.Combine(documentsFolder, SolutionsIndexerStrings.GitHubMy)*/);
-        // EN: Remove trailing backslashes before extracting names
-        // CZ: Odstraň trailing backslashe před extrakcí názvů
+        // Remove trailing backslashes before extracting names
         var solutionFoldersWithoutTrailingSlash = solutionFolders.Select(f => f.TrimEnd('\\')).ToArray();
         List<string> projOnlyNames = new List<string>(solutionFolders.Count);
         var on = FS.OnlyNamesNoDirectEdit(solutionFoldersWithoutTrailingSlash);
@@ -166,8 +161,7 @@ public partial class FoldersWithSolutions
 
     public static List<string> OnlyRealLoadedSolutionsFolders { get; set; } = new List<string>();
 
-    // EN: In key is filename without .csproj, in value is full path
-    // CZ: V klíči je jméno souboru bez .csproj, v hodnotě je úplná cesta
+    // In key is filename without .csproj, in value is full path
     public static Dictionary<string, List<string>> allCsprojGlobal { get; set; } = new Dictionary<string, List<string>>();
     public static
     async Task<Dictionary<string, List<string>>?>
